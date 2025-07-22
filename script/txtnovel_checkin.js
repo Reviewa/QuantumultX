@@ -1,7 +1,7 @@
 /**
  * 书香门第(txtnovel.vip)自动签到脚本
  * 环境变量: TXTNOVEL_COOKIE
- * 功能: 自动获取formhash并完成签到，支持青龙通知推送
+ * 功能: 自动获取formhash并完成签到
  */
 
 const axios = require('axios');
