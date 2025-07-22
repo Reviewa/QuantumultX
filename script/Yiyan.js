@@ -10,6 +10,5 @@ hostname = app.yiyan.art
 let obj = JSON.parse($response.body);
 if (obj.user) {
   obj.user.viptype = "4";
-  obj.user.intro = "VIP 已解锁";
 }
 $done({ body: JSON.stringify(obj) });
