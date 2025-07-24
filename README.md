@@ -1,4 +1,7 @@
 # QuantumultX 解锁脚本仓库 · 
+## 🌈 不止 QuantumultX
+
+![banner](https://raw.githubusercontent.com/Reviewa/QuantumultX/main/icon/banner.png)
 
 > 一个专为 QuantumultX / Surge / Loon /           青龙而打造的低级脚本仓库  
 > 解锁 · 自动化 · 精美图标 · 一切由你掌控
