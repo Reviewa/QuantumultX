@@ -26,5 +26,8 @@ if (obj.product) {
   obj.product.yearprice_origin = "0";
   obj.product.permanentprice_origin = "0";
 }
+if (obj.banner) {
+  obj.banner = [];
+}
 
 $done({ body: JSON.stringify(obj) });
