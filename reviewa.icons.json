@@ -3,12 +3,12 @@
   "description": "收集一些自己脚本用到的图标",
   "icons": [
     {
-      "name": "EBEEC933-4238-41C8-90CB-C03887FC6ED0.png",
-      "url": "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/icon/EBEEC933-4238-41C8-90CB-C03887FC6ED0.png"
-    },
-    {
       "name": "Wx.png",
       "url": "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/icon/Wx.png"
+    },
+    {
+      "name": "banner.png",
+      "url": "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/icon/banner.png"
     },
     {
       "name": "Dx.png",
