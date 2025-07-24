@@ -1,6 +1,6 @@
 # QuantumultX 解锁脚本仓库 · 
 
-> 一个专为 QuantumultX / Surge / Loon / 青龙而打造的高级脚本仓库  
+> 一个专为 QuantumultX / Surge / Loon /           青龙而打造的低级脚本仓库  
 > 解锁 · 自动化 · 精美图标 · 一切由你掌控
 
 ---
