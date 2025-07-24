@@ -1,7 +1,7 @@
-# QuantumultX 解锁脚本仓库 · Reviewa 出品
+# QuantumultX 解锁脚本仓库 · 
 
 > 一个专为 QuantumultX / Surge / Loon / 青龙而打造的高级脚本仓库  
-> 解锁 · 自动化 · 图标美化 · 一切由你掌控
+> 解锁 · 自动化 · 精美图标 · 一切由你掌控
 
 ---
 
@@ -33,12 +33,3 @@
 - ⚙️ 青龙自动化支持，轻松跑任务
 
 ---
-
-## 🧪 使用示例（QuantumultX）
-
-```ini
-[rewrite_local]
-^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt url script-response-body https://raw.githubusercontent.com/Reviewa/QuantumultX/main/script/verifyReceipt.js
-
-[mitm]
-hostname = buy.itunes.apple.com
