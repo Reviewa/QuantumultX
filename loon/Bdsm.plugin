@@ -1,6 +1,6 @@
 #!name=布丁扫描_2.4.5
 #!desc=纯鸡巴自慰,没吊用
-#!icon=https://github.com/Toperlock/Quantumult/raw/main/icon/Doraemon/Doraemon-1015.png
+#!icon=https://raw.githubusercontent.com/Reviewa/QuantumultX/main/icon/Budingsaomiao.png
 
 [Script]
 http-response ^https:\/\/api\.budingscan\.com\/user\/info script-path=https://raw.githubusercontent.com/Reviewa/QuantumultX/main/script/Bdsm.js, requires-body=true, timeout=60, tag=Bdsm
