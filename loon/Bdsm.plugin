@@ -6,6 +6,9 @@
 #!homepage=https://github.com/Reviewa/QuantumultX
 #!icon=https://raw.githubusercontent.com/Reviewa/QuantumultX/main/icon/Budingsaomiao.png
 
+[Argument]
+arg1 = switch, true, tag=是否开始自慰
+
 [Script]
 http-response ^https:\/\/api\.budingscan\.com\/user\/info script-path=https://raw.githubusercontent.com/Reviewa/QuantumultX/main/script/Bdsm.js, requires-body=true, timeout=60, tag=Bdsm
 
