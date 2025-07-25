@@ -5,35 +5,76 @@
 [mitm]
 hostname = pan.baidu.com
 */
-var body = JSON.parse($response.body);
-var url = $request.url;
 
+let body = $response.body;
+let url = $request.url;
+
+if (!body) {
+  $done({});
+}
+
+let obj = JSON.parse(body);
+
+// 解锁会员信息
+if (url.includes("/getminfo")) {
+  obj = {
+    "errno": 0,
+    "request_id": 342581654394297800,
+    "has_purchased": 1,
+    "has_buy_1m_auto_first": 0,
+    "can_buy_1m_auto_first": 0,
+    "can_buy_1m_auto_first_6": 0,
+    "has_received_7dfree": 1,
+    "product_tag": 3,
+    "sign_status": 1,
+    "sign_infos": [{
+      "product_id": "12745849497343294855",
+      "order_no": "2203060931530010416",
+      "ctime": 1646537208,
+      "mtime": "2022-05-06 11:26:48",
+      "status": 1,
+      "sign_price": 1000,
+      "sign_channel": 0
+    }],
+    "vip_tags": ["album_vip"],
+    "product_infos": [{
+      "product_id": "12745849497343294855",
+      "start_time": 1646534568,
+      "end_time": 4092599349,
+      "buy_time": 1649994533,
+      "tag": "album_vip",
+      "order_no": "2203060931530010416"
+    }],
+    "vip_infos": [{
+      "tag": "album_vip",
+      "start_time": 1646537208,
+      "end_time": 4092599349
+    }],
+    "expire_time": 0
+  };
+}
+
+// 去广告
+if (url.includes("/adswitch")) {
+  obj.switch = "close";
+}
+
+// 注入 SVIP 产品信息
 if (url.includes("/membership/user")) {
-  body.product_infos = [
+  obj.product_infos = [
     {
-      "product_id": "1",
-      "end_time": 4092599349,
-      "buy_time": 1417260485,
-      "cluster": "offlinedl",
-      "start_time": 1417260485,
-      "detail_cluster": "offlinedl",
-      "product_name": "gz_telecom_exp"
-    },
-    {
-      "product_name": "svip2_nd",
+      "product_id" : "1",
+      "end_time" : 4092599349,
+      "buy_time" : 1649994533,
+      "cluster" : "vip",
+      "start_time" : 1646534568,
+      "detail_cluster" : "svip",
+      "product_name" : "svip2_nd",
       "product_description": "超级会员",
-      "function_num": 0,
-      "start_time": 1417260485,
-      "buy_time": 1417260485,
-      "product_id": "1",
-      "auto_upgrade_to_svip": 1,
-      "end_time": 4092599349,
-      "cluster": "vip",
-      "detail_cluster": "svip",
       "status": 1
     }
   ];
-  body.guide_data = {
+  obj.guide_data = {
     "title": "超级会员 SVIP",
     "content": "已拥有极速下载+视频倍速特权",
     "button": {
@@ -41,45 +82,23 @@ if (url.includes("/membership/user")) {
       "action_url": "https://pan.baidu.com/wap/vip/user?from=myvip2#svip"
     }
   };
-  body.identity_icon = {
+  obj.identity_icon = {
     "vip": "https://internal-amis-res.cdn.bcebos.com/images/2019-8/1566452237582/78b88bf113b7.png",
     "common": "https://internal-amis-res.cdn.bcebos.com/images/2019-8/1566452539056/bf72cf66fae1.png",
     "svip": "https://internal-amis-res.cdn.bcebos.com/images/2019-8/1566452115696/38c1d743bfe9.png",
     "contentvip": ""
   };
-  body.error_code = 1;
-  delete body.tips_data_list;
-  delete body.status_data_arr;
-  delete body.sub_card_list;
+  obj.error_code = 1;
 }
 
-if (url.includes("/adswitch")) {
-  body.switch = "open";
-}
-
+// 精简福利引导提示
 if (url.includes("/welfare/list")) {
-  delete body.data;
+  delete obj.list;
 }
 
-if (url.includes("/bchannel/list")) {
-  body.data = [
-    {
-      "sub_title": "",
-      "id": 856,
-      "type": 3,
-      "name": "已解锁SVIP，未完整解锁"
-    },
-    {
-      "sub_title": "",
-      "id": 460,
-      "type": 3,
-      "name": "已拥有极速下载+视频倍速特权"
-    }
-  ];
-}
-
-if (url.includes("/api/usercfg")) {
-  body.user_new_define_cards = [
+// 修改卡片显示
+if (url.includes("/usercfg")) {
+  obj.user_new_define_cards = [
     {
       "card_id": "1",
       "card_type": "4",
@@ -99,4 +118,4 @@ if (url.includes("/api/usercfg")) {
   ];
 }
 
-$done({ body: JSON.stringify(body) });
+$done({ body: JSON.stringify(obj) });
