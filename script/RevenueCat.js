@@ -3,7 +3,7 @@
  * @version 1.0.0
  * @description 伪造 RevenueCat 响应，实现通杀
  * @compatible QuantumultX, Loon
- * @author Reviewa
+ * @author Qiq
  * @github https://github.com/Reviewa/QuantumultX
  */
 
