@@ -11,7 +11,7 @@ if ($request.url.includes(path)) {
     try {
         JSON.parse($response.body);
         const now = Date.now();
-        const expire = now + 251683320000000;
+        const expire = now + 4080192000000;
         const body = {
             result: {
                 products: [{
