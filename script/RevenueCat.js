@@ -1,11 +1,18 @@
 /*
- * @name RevenueCat 
- * @version 1.0.0
+ * @name RevenueCat
  * @description 伪造 RevenueCat 响应，实现通杀
  * @compatible QuantumultX, Loon
  * @author Qiq
  * @github https://github.com/Reviewa/QuantumultX
- */
+
+ [rewrite_local]
+^https?:\/\/.+\.revenuecat\.com\/(v\d\/)?receipts$ url script-response-body https://raw.githubusercontent.com/Reviewa/QuantumultX/main/script/revenuecat-pro.js
+^https?:\/\/.+\.revenuecat\.com\/(v\d\/)?subscribers\/[^\/]+$ url script-response-body https://raw.githubusercontent.com/Reviewa/QuantumultX/main/script/revenuecat-pro.js
+
+[mitm]
+hostname = *.revenuecat.com
+
+*/
 
 const now = Date.now();
 const nowISOString = new Date(now).toISOString();
