@@ -1,6 +1,6 @@
 /*
 [rewrite_local]
-^https:\/\/api\.rc-backup\.com\/v1\/subscribers\/(RCAnonymousID%3A)?[a-zA-Z0-9]+ url script-response-body https://raw.githubusercontent.com/Reviewa/QuantumultX/main/script/purelibro-pro.js
+^https:\/\/api\.rc-backup\.com\/v1\/subscribers\/(RCAnonymousID%3A)?[a-zA-Z0-9]+ url script-response-body https://raw.githubusercontent.com/Reviewa/QuantumultX/main/script/PureLibro.js
 
 [mitm]
 hostname = api.rc-backup.com
