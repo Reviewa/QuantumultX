@@ -16,27 +16,27 @@ let body = {
     other_purchases: {},
     management_url: null,
     subscriptions: {
-      vd_monthly_999: {
+      "vd_monthly_999": {
         store: "app_store",
         purchase_date: "2023-09-01T11:00:00Z",
         ownership_type: "PURCHASED",
         original_purchase_date: "2023-09-01T11:00:00Z",
-        expires_date: "2099-12-31T12:00:00Z",
-      },
+        expires_date: "2099-12-31T12:00:00Z"
+      }
     },
     entitlements: {
-      standard: {
+      "standard": {
         store: "app_store",
         purchase_date: "2023-09-01T11:00:00Z",
         ownership_type: "PURCHASED",
         original_purchase_date: "2023-09-01T11:00:00Z",
         product_identifier: "vd_monthly_999",
-        expires_date: "2099-12-31T12:00:00Z",
-      },
+        expires_date: "2099-12-31T12:00:00Z"
+      }
     },
     original_purchase_date: "2023-07-22T00:13:15Z",
     original_app_user_id: "$RCAnonymousID:9368C18C930C4AE3AAA325933DBB9409",
-    last_seen: new Date().toISOString(),
+    last_seen: new Date().toISOString()
   }
 };
 
