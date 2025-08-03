@@ -7,63 +7,61 @@ hostname = buy.itunes.apple.com
 */
 
 const remote = "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/config/subscriptionMap.json";
-const fallbackID = "reader.lifetime.pro"; // fallback 默认订阅 ID
 
 (async () => {
-  const body = typeof $response?.body === "string" ? JSON.parse($response.body) : $response.body;
-  const headers = $request.headers || {};
-  const ua = headers["User-Agent"] || headers["user-agent"] || "";
-  const bundle = body?.receipt?.bundle_id || body?.receipt?.Bundle_Id || "";
+  const r = typeof $response?.body === "string" ? JSON.parse($response.body) : $response.body;
+  const h = $request.headers || {};
+  const ua = h["User-Agent"] || h["user-agent"] || "";
+  const b = r?.receipt?.bundle_id || r?.receipt?.Bundle_Id || "";
   const now = Date.now();
-  const forever = 4102415999000;
+  const long = 4102415999000;
+  const keys = [ua, b].map(i => encodeURIComponent(i).trim()).filter(Boolean);
 
   let map = {};
   try {
-    const resp = await new Promise((r) => $httpClient.get(remote, r));
-    map = JSON.parse(resp?.data || "{}");
+    const res = await new Promise(cb => $httpClient.get(remote, cb));
+    map = JSON.parse(res?.data || "{}");
   } catch (e) {
-    console.log("❌ subscriptionMap 加载失败:", e);
-    $done({ body: JSON.stringify(body) });
+    $done({ body: JSON.stringify(r) });
     return;
   }
 
-  const keys = [ua, bundle].map(i => encodeURIComponent(i).trim()).filter(Boolean);
-  let matched = null;
-
-  for (const key of keys) {
-    if (map[key]) {
-      matched = map[key];
+  let id;
+  for (const k of keys) {
+    if (map[k]?.id) {
+      id = map[k].id;
       break;
     }
   }
+  if (!id && map["*"]?.id) {
+    id = map["*"].id;
+  }
+  if (!id) {
+    $done({ body: JSON.stringify(r) });
+    return;
+  }
 
-  const ids = matched?.id
-    ? Array.isArray(matched.id) ? matched.id : [matched.id]
-    : [fallbackID];
-
-  const pid = ids[0];
   const tid = "66" + Math.floor(1e12 + Math.random() * 9e12);
-
   const item = {
     quantity: "1",
-    product_id: pid,
+    product_id: id,
     transaction_id: tid,
     original_transaction_id: tid,
     purchase_date_ms: `${now}`,
     original_purchase_date_ms: `${now}`,
-    expires_date_ms: `${forever}`,
+    expires_date_ms: `${long}`,
     is_trial_period: "false",
     is_in_intro_offer_period: "false"
   };
 
   const output = {
     receipt: {
-      bundle_id: bundle,
+      bundle_id: b,
       in_app: [item]
     },
     latest_receipt_info: [item],
     pending_renewal_info: [{
-      product_id: pid,
+      product_id: id,
       auto_renew_status: "1"
     }],
     status: 0
