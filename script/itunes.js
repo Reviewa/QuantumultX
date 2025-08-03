@@ -10,8 +10,9 @@ const remote = "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/confi
 
 (async () => {
   const body = typeof $response?.body === "string" ? JSON.parse($response.body) : $response.body;
+  const headers = $request.headers || {};
+  const ua = headers["User-Agent"] || headers["user-agent"] || "";
   const bundle = body?.receipt?.bundle_id || body?.receipt?.Bundle_Id || "";
-  const encoded = encodeURIComponent(bundle);
   const now = Date.now();
   const forever = 4102415999000;
 
@@ -25,20 +26,30 @@ const remote = "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/confi
     return;
   }
 
-  const conf = map[encoded];
-  if (!conf?.id) {
-    console.log(`⚠️ 未匹配订阅 ID: ${bundle}`);
+  // 多种方式匹配 key（优先 UA，其次 bundle_id）
+  const keys = [ua, bundle].map(i => encodeURIComponent(i).trim()).filter(Boolean);
+  let matched = null;
+
+  for (const key of keys) {
+    if (map[key]) {
+      matched = map[key];
+      break;
+    }
+  }
+
+  if (!matched?.id) {
+    console.log("⚠️ 无法匹配订阅 ID, UA:", ua, "bundle:", bundle);
     $done({ body: JSON.stringify(body) });
     return;
   }
 
-  const ids = Array.isArray(conf.id) ? conf.id : [conf.id];
-  const forcedId = ids[0];  // 强制使用第一个 ID 注入
+  const ids = Array.isArray(matched.id) ? matched.id : [matched.id];
+  const pid = ids[0]; // 强制只注入第一个 ID
   const tid = "66" + Math.floor(1e12 + Math.random() * 9e12);
 
   const item = {
     quantity: "1",
-    product_id: forcedId,
+    product_id: pid,
     transaction_id: tid,
     original_transaction_id: tid,
     purchase_date_ms: `${now}`,
@@ -55,7 +66,7 @@ const remote = "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/confi
     },
     latest_receipt_info: [item],
     pending_renewal_info: [{
-      product_id: forcedId,
+      product_id: pid,
       auto_renew_status: "1"
     }],
     status: 0
