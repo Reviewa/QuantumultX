@@ -6,9 +6,7 @@
 hostname = buy.itunes.apple.com
 */
 
-const remote = "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/config/subscriptionMap.json";
-const fallbackID = "reader.lifetime.pro"; // fallback 默认订阅 ID
-
+const remote = "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/config/subscriptionMap.json";  // 增强配置路径
 (async () => {
   const body = typeof $response?.body === "string" ? JSON.parse($response.body) : $response.body;
   const headers = $request.headers || {};
@@ -37,11 +35,19 @@ const fallbackID = "reader.lifetime.pro"; // fallback 默认订阅 ID
     }
   }
 
-  const ids = matched?.id
-    ? Array.isArray(matched.id) ? matched.id : [matched.id]
-    : [fallbackID];
+  // fallback 匹配 *
+  if (!matched && map["*"]) {
+    matched = map["*"];
+    console.log("⚠️ 使用 fallback ID");
+  }
 
-  const pid = ids[0];
+  if (!matched?.id) {
+    console.log("❌ 无法匹配订阅 ID");
+    $done({ body: JSON.stringify(body) });
+    return;
+  }
+
+  const pid = Array.isArray(matched.id) ? matched.id[0] : matched.id;
   const tid = "66" + Math.floor(1e12 + Math.random() * 9e12);
 
   const item = {
