@@ -1,0 +1,9 @@
+#!name=🍎 App Store 解锁模块
+#!desc= iTunes 订阅状态 buy.itunes.apple.com / Apple 订阅
+#!author=Reviewa
+
+[Script]
+itunes_unlock = type=http-response, pattern=^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt, requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Reviewa/QuantumultX/main/script/itunes.js
+
+[MITM]
+hostname = buy.itunes.apple.com
