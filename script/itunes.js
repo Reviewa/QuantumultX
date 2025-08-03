@@ -10,8 +10,7 @@ const remote = "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/confi
 
 (async () => {
   const body = typeof $response?.body === "string" ? JSON.parse($response.body) : $response.body;
-  const bundle = body?.receipt?.bundle_id || body?.receipt?.Bundle_Id || "";
-  const encoded = encodeURIComponent(bundle);
+  const receipt = body?.receipt;
   const now = Date.now();
   const forever = 4102415999000;
 
@@ -25,19 +24,41 @@ const remote = "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/confi
     return;
   }
 
-  const conf = map[encoded];
-  if (!conf?.id) {
-    console.log("⚠️ 未匹配订阅配置:", encoded);
+  // 收集所有配置的 id ➝ 反向映射
+  const idMap = {};
+  for (const key in map) {
+    const entry = map[key];
+    if (!entry?.id) continue;
+    const ids = Array.isArray(entry.id) ? entry.id : [entry.id];
+    ids.forEach(id => { idMap[id] = entry; });
+  }
+
+  // 查找 App 请求的所有 product_id
+  const inApp = receipt?.in_app || [];
+  const requestedIds = inApp.map(i => i.product_id).filter(Boolean);
+
+  // 匹配你配置中的某个 ID
+  let matchedId = null;
+  let matchedConf = null;
+  for (const pid of requestedIds) {
+    if (idMap[pid]) {
+      matchedId = pid;
+      matchedConf = idMap[pid];
+      break;
+    }
+  }
+
+  // 找不到匹配 ID，返回原始响应
+  if (!matchedId) {
+    console.log("⚠️ 未识别出有效 product_id：", requestedIds);
     $done({ body: JSON.stringify(body) });
     return;
   }
 
-  const ids = Array.isArray(conf.id) ? conf.id : [conf.id];
   const tid = "66" + Math.floor(1e12 + Math.random() * 9e12);
-
   const item = {
     quantity: "1",
-    product_id: ids[0], // 强制返回第一个订阅 ID
+    product_id: matchedId,
     transaction_id: tid,
     original_transaction_id: tid,
     purchase_date_ms: `${now}`,
@@ -49,12 +70,12 @@ const remote = "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/confi
 
   const output = {
     receipt: {
-      bundle_id: bundle,
+      bundle_id: receipt.bundle_id,
       in_app: [item]
     },
     latest_receipt_info: [item],
     pending_renewal_info: [{
-      product_id: ids[0],
+      product_id: matchedId,
       auto_renew_status: "1"
     }],
     status: 0
