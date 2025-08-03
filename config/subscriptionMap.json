@@ -448,13 +448,7 @@
     "id": "com.pocket.compress.yearly"
   },
   "intolive": {
-    "id": "[
-      "me.imgbase.intolive.proSubWeekly",
-      "me.imgbase.intolive.proSubYearly",
-      "me.imgbase.intolive.removead",
-      "me.imgbase.intolive.proSubMonthly",
-      "me.imgbase.intolive.proSubYearly2024"
-    ]"
+     "me.imgbase.intolive.proSubYearly"
   },
   "io.sumi.GridDiary2": {
     "id": "io.sumi.GridDiary.pro.annually"
