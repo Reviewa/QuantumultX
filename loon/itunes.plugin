@@ -7,8 +7,11 @@
 #!system=iOS
 #!loon_version=3.3.3(883)
 
+[Argument]
+enableUnlock = switch,true,tag=启用解锁脚本,desc=关闭后将停止订阅功能
+
 [script]
-http-response ^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt script-path=https://raw.githubusercontent.com/Reviewa/QuantumultX/main/script/itunes.js, requires-body=true, tag=🍎 iTunes 解锁
+http-response ^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt script-path=https://raw.githubusercontent.com/Reviewa/QuantumultX/main/script/itunes.js, requires-body=true, tag=🍎 iTunes 解锁, enable={enableUnlock}
 
 [mitm]
 buy.itunes.apple.com
