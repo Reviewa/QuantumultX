@@ -1228,3 +1228,7 @@
     "note": "瑜伽"
   }
 }
+"*": {
+  "id": "com.va.adBlocker.lifeTimefree",
+  "note": "通配默认订阅"
+}
