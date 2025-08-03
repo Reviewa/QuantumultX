@@ -7,6 +7,7 @@ hostname = buy.itunes.apple.com
 */
 
 const remote = "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/config/subscriptionMap.json";
+const fallbackID = "reader.lifetime.pro"; // fallback 默认订阅 ID
 
 (async () => {
   const body = typeof $response?.body === "string" ? JSON.parse($response.body) : $response.body;
@@ -26,7 +27,6 @@ const remote = "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/confi
     return;
   }
 
-  // 多种方式匹配 key（优先 UA，其次 bundle_id）
   const keys = [ua, bundle].map(i => encodeURIComponent(i).trim()).filter(Boolean);
   let matched = null;
 
@@ -37,14 +37,11 @@ const remote = "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/confi
     }
   }
 
-  if (!matched?.id) {
-    console.log("⚠️ 无法匹配订阅 ID, UA:", ua, "bundle:", bundle);
-    $done({ body: JSON.stringify(body) });
-    return;
-  }
+  const ids = matched?.id
+    ? Array.isArray(matched.id) ? matched.id : [matched.id]
+    : [fallbackID];
 
-  const ids = Array.isArray(matched.id) ? matched.id : [matched.id];
-  const pid = ids[0]; // 强制只注入第一个 ID
+  const pid = ids[0];
   const tid = "66" + Math.floor(1e12 + Math.random() * 9e12);
 
   const item = {
