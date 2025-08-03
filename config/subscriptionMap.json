@@ -92,8 +92,8 @@
     "note": "ColorCapture"
   },
   "*": {
-    "id": "com.pocket.compress.yearly",
-    "note": "compress 等通配"
+    "id": "com.va.adBlocker.lifeTimefree",
+    "note": "é»è®¤ééè®¢é"
   },
   "ColorPaint": {
     "id": "coloring.app.singingfish.year",
@@ -1201,7 +1201,7 @@
   },
   "ZIP%E5%8E%8B%E7%BC%A9%E8%A7%A3%E5%8E%8B%E7%BC%A9%E5%B7%A5%E5%85%B7": {
     "id": "com.mobislet.zipfile.yearly",
-    "note": "ZIP压缩解压缩工具"
+    "note": "ZIPåç¼©è§£åç¼©å·¥å·"
   },
   "ZJTBiaoGe": {
     "id": "zhangjt.biaoge.monthvip",
@@ -1209,26 +1209,22 @@
   },
   "%E5%80%92%E6%94%BE%E6%8C%91%E6%88%98": {
     "id": "com.abighead.ReverseChallenge.iap.pro.year",
-    "note": "倒放挑战"
+    "note": "åæ¾ææ"
   },
   "%E5%B0%8F%E5%B0%8F%E7%9B%B8%E6%9C%BA%E5%A4%A7%E5%B8%88": {
     "id": "com.ai.merge.forever.vip",
-    "note": "小小相机大师"
+    "note": "å°å°ç¸æºå¤§å¸"
   },
   "%E5%BD%95%E9%9F%B3%E4%B8%93%E4%B8%9A%E7%89%88": {
     "id": "com.winat.recording.pro.yearly",
-    "note": "录音专业版"
+    "note": "å½é³ä¸ä¸ç"
   },
   "%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8": {
     "id": "com.mobislet.files.yearly",
-    "note": "文件管理器"
+    "note": "æä»¶ç®¡çå¨"
   },
   "%E7%91%9C%E4%BC%BD": {
     "id": "com.vgfit.yoga.yearly",
-    "note": "瑜伽"
+    "note": "çä¼½"
   }
-}
-"*": {
-  "id": "com.va.adBlocker.lifeTimefree",
-  "note": "通配默认订阅"
 }
