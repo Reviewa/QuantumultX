@@ -1,0 +1,20 @@
+{
+  "plugin_version": "1.0.0",
+  "name": "🍎 App Store 解锁",
+  "author": "Reviewa",
+  "scriptings": [
+    {
+      "http_response": true,
+      "requires_body": true,
+      "url": "^https://buy\\.itunes\\.apple\\.com/verifyReceipt",
+      "script_url": "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/script/itunes.js",
+      "timeout": 30,
+      "enabled": true
+    }
+  ],
+  "mitm": {
+    "hostnames": [
+      "buy.itunes.apple.com"
+    ]
+  }
+}
