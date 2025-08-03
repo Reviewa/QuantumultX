@@ -1,0 +1,936 @@
+{
+  "AdBlocker": {
+    "id": "com.va.adBlocker.lifeTimefree"
+  },
+  "Again": {
+    "id": "com.owen.again.profession"
+  },
+  "AIAssistant": {
+    "id": "AIchat_1w_7.99_trial"
+  },
+  "AIHeader": {
+    "id": "com.ai.avatar.maker.month.3dayfree"
+  },
+  "AllMyBatteries": {
+    "id": "AllMyBatteries_Ultimate"
+  },
+  "AnyDown": {
+    "id": "com.xiaoqi.down.forever"
+  },
+  "AppAlarmIOS": {
+    "id": "alarm.me.vip.year.tier1"
+  },
+  "BeatStation": {
+    "id": "BS_Pro_Yearly"
+  },
+  "BestColor": {
+    "id": "com.bestColor.tool.month"
+  },
+  "BingQiTools": {
+    "id": "bingqi_e2"
+  },
+  "BodyTune": {
+    "id": "Bodypro1"
+  },
+  "BookReader": {
+    "id": "com.reader.1year"
+  },
+  "Boom": {
+    "id": "com.globaldelight.iBoom.LifetimeDiscountPack"
+  },
+  "BuBuSZ": {
+    "id": "quaVersion"
+  },
+  "CapyMood": {
+    "id": "com.paha.CapyMood.year"
+  },
+  "ChickAlarmClock": {
+    "id": "com.ChickFocus.ChickFocus.yearly_2023_promo"
+  },
+  "ChmReader": {
+    "id": "EpubReader_ProVersion"
+  },
+  "ChordMaster": {
+    "id": "com.chordMaster.once"
+  },
+  "cleanPhone": {
+    "id": "com.clean.year"
+  },
+  "cn.linfei.SimpleRecorder": {
+    "id": "cn.linfei.SimpleRecorder.Plus"
+  },
+  "co.bazaart.patternator": {
+    "id": "Patternator_Lock_Screen_Monthly"
+  },
+  "CodeSnippet": {
+    "id": "it.beatcode.codesnippetpro.annualSubscription"
+  },
+  "ColorCapture": {
+    "id": "10001"
+  },
+  "ColorPaint": {
+    "id": "coloring.app.singingfish.year"
+  },
+  "com.1ps.lovetalk": {
+    "id": "com.1ps.lovetalk.normal.weekly"
+  },
+  "com.7color.newclean": {
+    "id": "com.cleaner.salesyear"
+  },
+  "com.alphamobiletech.bodyApp": {
+    "id": "Bodyapp_Forever"
+  },
+  "com.alphamobiletech.facey": {
+    "id": "Facey_Forever"
+  },
+  "com.beauty.MeiTui": {
+    "id": "vip_member_v3_365day"
+  },
+  "com.BertonYc.ScannerOCR": {
+    "id": "Scanner_Subscibe_Permanent"
+  },
+  "com.bestmusicvideo.formmaster": {
+    "id": "com.form.1yearvip"
+  },
+  "com.biggerlens.photoretouch": {
+    "id": "com.photoretouch.SVIP"
+  },
+  "com.CalculatorForiPad.InternetRocks": {
+    "id": "co.airapps.calculator.year"
+  },
+  "com.casttv.remotetv": {
+    "id": "liftetime2"
+  },
+  "com.chenxi.shanniankapian": {
+    "id": "com.chenxi.shannian.superNian"
+  },
+  "com.Colin.Colors": {
+    "id": "com.colin.colors.annualVIP"
+  },
+  "com.cuilingshi.flipclock": {
+    "id": "FlipClockProVersion"
+  },
+  "com.damon.dubbing": {
+    "id": "com.damon.dubbing.vip12"
+  },
+  "com.dandelion.Routine": {
+    "id": "membership"
+  },
+  "com.dbmeterpro.dB-Meter-Free": {
+    "id": "com.dbmeterpro.premiumModeSubscriptionWithTrial"
+  },
+  "com.decibel.tool": {
+    "id": "decibel98free3"
+  },
+  "com.eleven.chatgpt": {
+    "id": "com.chatgpt.yearly"
+  },
+  "com.floatcamellia.motiok": {
+    "id": "com.floatcamellia.motiok.vipforever"
+  },
+  "com.floatcamellia.motionninja": {
+    "id": "com.floatcamellia.motionninja.yearlyvip"
+  },
+  "com.floatcamellia.prettyup": {
+    "id": "com.floatcamellia.prettyup.onetimepurchase"
+  },
+  "com.geekapp.VoiceTranslation": {
+    "id": "VoiceTranslatorPerpetual"
+  },
+  "com.gostraight.smallAccountBook": {
+    "id": "ForeverVIPPayment"
+  },
+  "com.hanchongzan.book": {
+    "id": "com.hanchongzan.book.vip"
+  },
+  "com.hanchongzan.loverlist": {
+    "id": "com.hanchongzan.loverlist.01"
+  },
+  "com.hanchongzan.period": {
+    "id": "com.hanchongzan.period.girl"
+  },
+  "com.icandiapps.nightsky": {
+    "id": "com.icandiapps.ns4.annual"
+  },
+  "com.ideack.ASR": {
+    "id": "ASR_Permanent_Plan"
+  },
+  "com.ideack.BusinessCard": {
+    "id": "BusinessCardVipPerpetual"
+  },
+  "com.ideack.MagicAudio": {
+    "id": "MagicAudioPermanent"
+  },
+  "com.idealityapp.VideoEditing": {
+    "id": "MagicVideo_Vip_Permanent"
+  },
+  "com.instagridpost.rsigp": {
+    "id": "com.GridPost.oneyearplus"
+  },
+  "com.iuuapp.audiomaker": {
+    "id": "com.iuuapp.audiomaker.cloud.year"
+  },
+  "com.jianili.Booka": {
+    "id": "com.jianili.Booka.pro.yearly"
+  },
+  "com.kuaijiezhilingdashi.appname": {
+    "id": "com.othermaster.yearlyvip"
+  },
+  "com.leapfitness.fasting": {
+    "id": "com.leapfitness.fasting.oneyear1"
+  },
+  "com.lockwidt.cn": {
+    "id": "com.lockwidt.cn.member"
+  },
+  "com.LuoWei.aDiary": {
+    "id": "com.LuoWei.aDiary.yearly0"
+  },
+  "com.macpaw.iosgemini": {
+    "id": "com.macpaw.iosgemini.month.trial"
+  },
+  "com.maine.aifill": {
+    "id": "com.maine.aifill.unlimited"
+  },
+  "com.mematom.ios": {
+    "id": "MMYear"
+  },
+  "com.palmmob.officeios": {
+    "id": "com.palmmob.officeios.188"
+  },
+  "com.palmmob.pdfios": {
+    "id": "com.palmmob.pdfios.168"
+  },
+  "com.palmmob.recorder": {
+    "id": "com.palmmob.recorder.198"
+  },
+  "com.palmmob.scanner2ios": {
+    "id": "com.palmmob.scanner2ios.396"
+  },
+  "com.photoslab.ai.writerassistant": {
+    "id": "com.photoslab.ai.writerassistant.year"
+  },
+  "com.pocket.compress": {
+    "id": "com.pocket.compress.yearly"
+  },
+  "com.pocket.format": {
+    "id": "com.pocket.format.yearly"
+  },
+  "com.pocket.photo": {
+    "id": "com.pocket.photo.yearly"
+  },
+  "com.pocket.watermark": {
+    "id": "com.pocket.watermark.yearly"
+  },
+  "com.qingcheng.seal.Seal": {
+    "id": "com.qingcheng.seal.Seal.premium.forever"
+  },
+  "com.quangtm193.picpro": {
+    "id": "com.quangtm193.picpro1year"
+  },
+  "com.readdle.CalendarsLite": {
+    "id": "com.readdle.CalendarsLite.subscription.year20trial7"
+  },
+  "com.readdle.ReaddleDocsIPad": {
+    "id": "com.readdle.ReaddleDocsIPad.subscription.month10_allusers"
+  },
+  "com.richads.saucyart": {
+    "id": "com.richads.saucyart.sub.quarterly_29.99"
+  },
+  "com.risingcabbage.pro.camera": {
+    "id": "com.risingcabbage.pro.camera.yearlysubscription"
+  },
+  "com.RuoG.Pixiu": {
+    "id": "com.RuoG.Pixiu.VIPYear"
+  },
+  "com.SingingFish.SudokuGame": {
+    "id": "com.singingfish.sudokugame.year"
+  },
+  "com.sixiaobo.MusCut": {
+    "id": "com.purecollage.pro"
+  },
+  "com.skysoft.facecartoon": {
+    "id": "com.skysoft.facecartoon.subscription.yearly"
+  },
+  "com.skysoft.pencilsketch": {
+    "id": "com.skysoft.pencilsketch.subscription.yearly"
+  },
+  "com.skysoft.picsqueen": {
+    "id": "com.skysoft.picsqueen.subscription.yearly"
+  },
+  "com.skysoft.removalfree": {
+    "id": "com.skysoft.removalfree.discount.unlimitedaccess"
+  },
+  "com.tapuniverse.texteditor": {
+    "id": "com.tapuniverse.texteditor.w",
+    "note": "TextEditor"
+  },
+  "com.tasmanic.capture": {
+    "id": "CTPCAPTUREYEARLY"
+  },
+  "com.teadoku.flashnote": {
+    "id": "pro_ios_ipad_mac"
+  },
+  "com.traveltao.ExchangeAssistant": {
+    "id": "lxbyplus"
+  },
+  "com.uzstudio.avenuecast.ios": {
+    "id": "1001"
+  },
+  "com.visualmidi.app.perfectpiano.Perfect-Piano": {
+    "id": "auto_renew_monthly_subscription"
+  },
+  "com.vstudio.newpuzzle": {
+    "id": "com.vstudio.newpuzzle.yearlyVipFreetrail.15_99"
+  },
+  "com.yanxia.ChsMedical": {
+    "id": "VIPUser"
+  },
+  "com.ydatong.dingdone": {
+    "id": "com.ydatong.dingdone.vip.forever"
+  },
+  "com.yengshine.proccd": {
+    "id": "com.yengshine.proccd.yearly"
+  },
+  "com.yengshine.webrecorder": {
+    "id": "com.yengshine.webrecorder.yearly"
+  },
+  "com.yumiteam.Kuki.ID": {
+    "id": "com.yumiteam.Kuki.ID.2"
+  },
+  "com.zerone.hidesktop": {
+    "id": "com.zerone.hidesktop.forever"
+  },
+  "com.ziheng.OneBox": {
+    "id": "com.ziheng.OneBox"
+  },
+  "com.zijayrate.analogcam": {
+    "id": "com.zijayrate.analogcam.vipforever10"
+  },
+  "CongZhenBaZi": {
+    "id": "vip_forever_78"
+  },
+  "CongZhenQiMen": {
+    "id": "cn.congzhen.CongZhenQiMen.yearlyplan"
+  },
+  "ContractMaster": {
+    "id": "com.qingxiu.contracts.monthly"
+  },
+  "CostMemo": {
+    "id": "org.zrey.money.lifetime"
+  },
+  "DailySpending": {
+    "id": "com.xxtstudio.dailyspending.year"
+  },
+  "darkWeb": {
+    "id": "dforce_unlock_all_functions"
+  },
+  "DeviceFinder": {
+    "id": "com.wonderfind.lifetime"
+  },
+  "Dial": {
+    "id": "2104"
+  },
+  "Digital%20Planner": {
+    "id": "com.softwings.DigitalPlanner.1year"
+  },
+  "DoMemo": {
+    "id": "org.zrey.fastnote.lifetime"
+  },
+  "DrumPads": {
+    "id": "com.gismart.drumpads.pro_lifetime_30"
+  },
+  "DuChuangZhe": {
+    "id": "org.zrey.du.main"
+  },
+  "ECGANALYZER": {
+    "id": "com.wms.hrv.yearlyfamilysharing"
+  },
+  "EWA": {
+    "id": "com.ewa.renewable.subscription.year8"
+  },
+  "excel": {
+    "id": "com.gamawh.excelerios.yearly"
+  },
+  "ExcelSpreadSheetsWPS": {
+    "id": "com.turbocms.SimpleSpreadSheet.viponeyear"
+  },
+  "FancyCamPlus": {
+    "id": "com.alphaplus.fancycam.year.198"
+  },
+  "FastPlayer": {
+    "id": "VideoPlayer_ProVersion"
+  },
+  "FDSunAlly": {
+    "id": "com.freenotes.sunally.lifetime"
+  },
+  "FETreeVideoChange": {
+    "id": "com.dj.videototext.forever"
+  },
+  "FileArtifact": {
+    "id": "com.shengzhou.fileartifact.permanent"
+  },
+  "FileBrowser": {
+    "id": "com.qingcheng.filex.pro.yearly"
+  },
+  "film": {
+    "id": "pro_auto_subscribe_year_ovs"
+  },
+  "Filterra": {
+    "id": "com.filterra.wtonetimepurchase"
+  },
+  "FitnessBodybuildingVGFIT": {
+    "id": "com.vgfit.fitnessvip.yearly"
+  },
+  "FlashTransportMaster": {
+    "id": "com.flashtransport.fightenegery.yearly.base"
+  },
+  "Focos": {
+    "id": "com.focos.1w_t4_1w"
+  },
+  "FoodIdentificationTool": {
+    "id": "20002"
+  },
+  "Fotoz": {
+    "id": "com.kiddy.fotoz.ipa.pro"
+  },
+  "FourthPPT": {
+    "id": "com.FourthPPT.Mobile.Forever"
+  },
+  "Future%20Baby": {
+    "id": "com.nilu.faceseer.yearly"
+  },
+  "GenerateAllOrdersTool": {
+    "id": "Order_Vip_010"
+  },
+  "GoodTask": {
+    "id": "com.hahainteractive.goodtask3.pro"
+  },
+  "GPSMaker": {
+    "id": "theodolite_vip_year"
+  },
+  "Graphionica": {
+    "id": "premium_year"
+  },
+  "GreetingScanner": {
+    "id": "com.alphaplus.greetingscaner.w.b"
+  },
+  "Guitar%20Gravitas": {
+    "id": "GuitarGravitasChordsScalesArpeggiosLessons"
+  },
+  "Guitar%20Notation": {
+    "id": "gn_access_weekly"
+  },
+  "Habbit": {
+    "id": "HabitUpYearly"
+  },
+  "habitdot": {
+    "id": "habitdots_pro_forever"
+  },
+  "HandNote": {
+    "id": "permanent_membership"
+  },
+  "HashPhotos": {
+    "id": "com.kobaltlab.HashPhotos.iap.allinone.free"
+  },
+  "HRV": {
+    "id": "com.stress.test.record.yearly"
+  },
+  "IconChange": {
+    "id": "iconeryearvip"
+  },
+  "Idea": {
+    "id": "top.ideaapp.ideaiOS.membership.oneyear"
+  },
+  "imgplay": {
+    "id": "me.imgbase.imgplay.subscriptionYearly"
+  },
+  "Instant%20Saver": {
+    "id": "com.pocket.compress.yearly"
+  },
+  "intolive": {
+    "id": "me.imgbase.intolive.proSubYearly"
+  },
+  "io.sumi.GridDiary2": {
+    "id": "io.sumi.GridDiary.pro.annually"
+  },
+  "IPTV%20Flixana": {
+    "id": "iptv_flixana_lifetime_sub"
+  },
+  "iTimely": {
+    "id": "org.zrey.iTimely.lifetime"
+  },
+  "iVCam": {
+    "id": "ivcam.full"
+  },
+  "JCCalendar": {
+    "id": "com.sjc.calendar.vip.lifelong"
+  },
+  "Jennie%20AI": {
+    "id": "com.skysoft.text2img.vip.yearly"
+  },
+  "killer.sudoku.free.brain.puzzle": {
+    "id": "ks.i.iap.premium"
+  },
+  "Kilonotes": {
+    "id": "kipa_kilonotes_quarter_subscription"
+  },
+  "life.journal.diary": {
+    "id": "life.journal.diary.lifetime"
+  },
+  "LifeTracker": {
+    "id": "com.dk.lifetracker.yearplan"
+  },
+  "LingLongShouZ": {
+    "id": "zhenwushouzhangQuarterlyPlus"
+  },
+  "Lister": {
+    "id": "com.productlab.lister.yearly"
+  },
+  "LogInput": {
+    "id": "com.logcg.loginput"
+  },
+  "Luminous": {
+    "id": "com.spacemushrooms.weekly"
+  },
+  "MagicWidget": {
+    "id": "cf__forever_0_4.7.1"
+  },
+  "Mango6Minute": {
+    "id": "576170870"
+  },
+  "MeasurementTools": {
+    "id": "mesurementyearvip"
+  },
+  "MediaConvert": {
+    "id": "MediaConverter_ProVersion"
+  },
+  "MediaEditor": {
+    "id": "alwaysowner"
+  },
+  "MeowTalk": {
+    "id": "meowtalk.month.basic.autorenewable.subscription"
+  },
+  "MessageHold": {
+    "id": "com.messagehold.forever"
+  },
+  "MGhostLens": {
+    "id": "com.ghostlens.premium1month"
+  },
+  "Miary": {
+    "id": "lifetime_sub"
+  },
+  "Mindkit": {
+    "id": "mindkit_permanently"
+  },
+  "MiniMouse": {
+    "id": "minimouse_vip_1year"
+  },
+  "MOLDIV": {
+    "id": "com.jellybus.Moldiv.IAP.PRO7999"
+  },
+  "moment": {
+    "id": "PYJMoment2"
+  },
+  "MoMoShouZhang": {
+    "id": "shunchangshouzhangQuarterlyPlus"
+  },
+  "MoneyWiz": {
+    "id": "com.moneywiz.personalfinance.1year"
+  },
+  "MonitorPlus": {
+    "id": "com.unhonin.MonitorPlus.proversion"
+  },
+  "MoodTracker": {
+    "id": "co.vulcanlabs.moodtracker.lifetime2"
+  },
+  "Motivation": {
+    "id": "com.monkeytaps.motivation.premium.year3"
+  },
+  "Muza": {
+    "id": "com.appmuza.premium_year"
+  },
+  "MWeb%20iOS": {
+    "id": "10001"
+  },
+  "MyAlbum": {
+    "id": "com.colin.myalbum.isUpgradeVip"
+  },
+  "MyDiary": {
+    "id": "diary.yearly.vip.1029"
+  },
+  "MyWorks": {
+    "id": "com.MyWorks.Handwritten.Year"
+  },
+  "net.daylio.Daylio": {
+    "id": "net.daylio.one_year_pro.offer_initial"
+  },
+  "Notation%20Pad": {
+    "id": "np_access_weekly"
+  },
+  "Notebook": {
+    "id": "com.zoho.notebook.ios.personal.yearly"
+  },
+  "Noted": {
+    "id": "com.digitalworkroom.noted.plus.lifetime"
+  },
+  "NoteKeys": {
+    "id": "notekeys_access_weekly"
+  },
+  "Nutrilio": {
+    "id": "net.nutrilio.one_year_plus"
+  },
+  "NYMF": {
+    "id": "com.nymf.app.premium_year"
+  },
+  "One%20Markdown": {
+    "id": "10012"
+  },
+  "one%20sec": {
+    "id": "wtf.riedel.one_sec.pro.annual.individual"
+  },
+  "OneExtractor": {
+    "id": "com.OneExtractor.Video.Forever"
+  },
+  "OrderGenerator": {
+    "id": "oder_pay_forever"
+  },
+  "org.skydomain.foodcamera": {
+    "id": "org.skydomain.foodcamera.yearly"
+  },
+  "org.zrey.metion": {
+    "id": "org.zrey.metion.pro"
+  },
+  "Overdrop": {
+    "id": "com.weather.overdrop.forever"
+  },
+  "Packet": {
+    "id": "com.aaaalab.nepacket.iap.full"
+  },
+  "Paste%20Keyboard": {
+    "id": "com.keyboard.1yetr"
+  },
+  "PDFReaderPro%20Free": {
+    "id": "com.pdfreaderpro.free.member.all_access_pack_permanent_license.001"
+  },
+  "PerfectImage": {
+    "id": "Perfect_Image_VIP_Yearly"
+  },
+  "Period": {
+    "id": "com.hanchongzan.time.pro"
+  },
+  "PhimCiaj": {
+    "id": "com.jiancent.calligraphymaster.lifetime"
+  },
+  "Photo%20Cutout": {
+    "id": "com.icepine.allyear"
+  },
+  "PhotoCollagePro": {
+    "id": "PHOTABLE_PREMIUM"
+  },
+  "PhotoMovie": {
+    "id": "com.mediaeditor.photomovie.year"
+  },
+  "PhotosPK": {
+    "id": "indie.davidwang.PicPicks.membership.lifetime"
+  },
+  "PhotosSorter": {
+    "id": "sorter.pro.ipa"
+  },
+  "PhotoWhite": {
+    "id": "org.zrey.photowhite.flash_lifetime"
+  },
+  "Piano%20Fantasy": {
+    "id": "com.lotuz.PianoFantasy.weekwithtrail"
+  },
+  "Piano%20Plus": {
+    "id": "kn_access_weekly"
+  },
+  "Piano%20Rush": {
+    "id": "com.lotuz.PianoPro.weekwithtrail"
+  },
+  "Picsew": {
+    "id": "com.sugarmo.ScrollClip.pro"
+  },
+  "PICSPLAY": {
+    "id": "com.jellybus.PicsPlay2.IAP.PRO5999"
+  },
+  "PictureScanner": {
+    "id": "om.picturescanner.tool.year"
+  },
+  "Planist": {
+    "id": "org.zrey.planist.main"
+  },
+  "Planner%20Plus": {
+    "id": "com.btgs.plannerfree.yearly"
+  },
+  "Pollykann": {
+    "id": "vip.forever.pollykann"
+  },
+  "POPOLockScreenWidgetable": {
+    "id": "com.widget.fightenegery.yearly"
+  },
+  "ppt": {
+    "id": "com.palmmob.pptios.yearly"
+  },
+  "Presets": {
+    "id": "com.chromatech.chroma.yearlyAutoRenewable"
+  },
+  "Processing": {
+    "id": "wtf.riedel.processing.lifetime"
+  },
+  "ProFit": {
+    "id": "com.maxty.gofitness.yearlyplan"
+  },
+  "ProKnockOut": {
+    "id": "com.knockout.SVIP.50off"
+  },
+  "Prookie": {
+    "id": "prookie.month.withtrial.0615"
+  },
+  "ProREC": {
+    "id": "ProAudioCamera_Annual"
+  },
+  "ProtractorEdge": {
+    "id": "ProtracatorEdge.PremiumAccess"
+  },
+  "Ptime": {
+    "id": "com.subscribe.pro.year"
+  },
+  "qxwp%20copy": {
+    "id": "com.chowjoe.wp2free.year.pro"
+  },
+  "qxzs": {
+    "id": "yongjiu"
+  },
+  "RawPlus": {
+    "id": "com.dynamicappdesign.rawplus.yearlysubscription"
+  },
+  "RBrowser": {
+    "id": "com.mm.RBroswer.product11"
+  },
+  "Reader": {
+    "id": "com.xiaoqi.reader.forever"
+  },
+  "remotelg": {
+    "id": "com.gqp.remotelg.lifetime"
+  },
+  "RitmoVideo": {
+    "id": "com.zhk.hidebox.yearly"
+  },
+  "Rookie": {
+    "id": "com.jellybus.Rookie.IAP.PRO5999"
+  },
+  "SaveTik": {
+    "id": "com.pocket.compress.yearly"
+  },
+  "ServerKit": {
+    "id": "com.serverkit.subscription.year.a"
+  },
+  "SheetMusicPro": {
+    "id": "sheetmusicpro.yearwithtrial"
+  },
+  "ShotOn": {
+    "id": "com.colin.shoton.forevervip"
+  },
+  "SilProject": {
+    "id": "com.sm.Alina.Pro"
+  },
+  "SimpleNotation": {
+    "id": "com.xinlin.notation.once"
+  },
+  "SmartGym": {
+    "id": "com.smartgymapp.smartgym.premiumuserworkoutsyearly"
+  },
+  "Smoke": {
+    "id": "smoke19870727"
+  },
+  "SnakeReader": {
+    "id": "com.lyran.snakescanner.premium18"
+  },
+  "SoundLab": {
+    "id": "8001"
+  },
+  "StandbyWidget": {
+    "id": "com.standby.idream.year.68"
+  },
+  "Storybeat": {
+    "id": "yearly_1"
+  },
+  "Straw": {
+    "id": "com.1year.eyedropper"
+  },
+  "stretchworkout": {
+    "id": "com.abishkking.premiumYearStretch"
+  },
+  "Subscriptions": {
+    "id": "com.touchbits.subscriptions.iap.pro.yearly"
+  },
+  "sudoku.puzzle.free.game.brain": {
+    "id": "sudoku.i.sub.vvip.p1y"
+  },
+  "SuperDriving": {
+    "id": "jiakao_vip_forever"
+  },
+  "SuperElves": {
+    "id": "com.SuperElves.Answer.Forever"
+  },
+  "SuperMandarin": {
+    "id": "pth_vip_year"
+  },
+  "SuperPointer": {
+    "id": "com.SuperPointer.Location.Forever"
+  },
+  "SuperQuestion": {
+    "id": "qtzs_vip_year"
+  },
+  "SuperWidget": {
+    "id": "com.focoslive"
+  },
+  "SurveyorPro": {
+    "id": "com.celiangyuan.SurveyorPro.OneYear"
+  },
+  "SymbolKeyboard": {
+    "id": "fronts.keyboard.singingfish.one"
+  },
+  "Synthesizer": {
+    "id": "com.qingxiu.synthesizer.mon"
+  },
+  "tech.miidii.MDClock": {
+    "id": "tech.miidii.MDClock.pro"
+  },
+  "TheLastFilm": {
+    "id": "Filmroll_Pro_1Year"
+  },
+  "TimeCut": {
+    "id": "com.floatcamellia.hfrslowmotion.forevervip"
+  },
+  "Tinglee": {
+    "id": "vip.forever.tinglee"
+  },
+  "TinyPNGTool": {
+    "id": "com.tinypngtool.tool.weekvip"
+  },
+  "ToDoList": {
+    "id": "todolist.subscription.yearly"
+  },
+  "TPTeleprompter": {
+    "id": "com.pocket.compress.yearly"
+  },
+  "Translator": {
+    "id": "trans_sub_week"
+  },
+  "TT": {
+    "id": "com.55panda.hicalculator.year_sub"
+  },
+  "TypeOn%20Keyboard": {
+    "id": "com.hanchongzan.book.vip"
+  },
+  "UniversTranslate": {
+    "id": "com.univers.translator.tool.year"
+  },
+  "Utsuki": {
+    "id": "KameePro"
+  },
+  "VDIT": {
+    "id": "me.imgbase.videoday.profeaturesLifetime"
+  },
+  "vibee": {
+    "id": "com.vibee.year.bigchampagne"
+  },
+  "VideoEditor": {
+    "id": "com.god.videohand.alwaysowner"
+  },
+  "VideoHelper": {
+    "id": "vip_service"
+  },
+  "vpn": {
+    "id": "yearautorenew"
+  },
+  "Wallpapers": {
+    "id": "wallpaperworld.subscription.yearly.12.notrial"
+  },
+  "WallpaperWidget": {
+    "id": "com.widget.theme.yearly.3dayfree"
+  },
+  "WasteCat": {
+    "id": "dev.sanjin.WasteCat.PermanentVip"
+  },
+  "WatchWallpaper": {
+    "id": "indie.davidwang.WatchWallpaper.yearsubscriptegold"
+  },
+  "Water%20Reminder": {
+    "id": "com.vgfit.premiumtracker.year"
+  },
+  "WaterMaskCamera": {
+    "id": "com.camera.watermark.yearly.3dayfree"
+  },
+  "WaterMinder": {
+    "id": "waterminder.premiumYearly"
+  },
+  "WeeklyNote": {
+    "id": "org.zrey.weeklynote.lifetime"
+  },
+  "Wext": {
+    "id": "com.lmf.wext.life"
+  },
+  "WidgetBox": {
+    "id": "widgetlab001"
+  },
+  "wrongbook": {
+    "id": "com.palmmob.wrongbookios.yearly"
+  },
+  "Xfuse": {
+    "id": "com.xfuse.ProVision"
+  },
+  "XIAOTangHomeParadise": {
+    "id": "com.yuee.mo2"
+  },
+  "XinQingRiJi": {
+    "id": "zhiwenshouzhangQuarterlyPlus"
+  },
+  "xTerminal": {
+    "id": "xterminal.pro2"
+  },
+  "xyz.iofree.lifenotes": {
+    "id": "xyz.iofree.lifelog.pro.yearly"
+  },
+  "YiJianKouTu": {
+    "id": "XiChaoYiJianKouTuPlus"
+  },
+  "YinzhangMaster": {
+    "id": "com.xiaoqi.seal.forever"
+  },
+  "YSBrowser": {
+    "id": "com.ys.pro"
+  },
+  "ZenJournal": {
+    "id": "zen_pro"
+  },
+  "ZeroTuImg": {
+    "id": "ZeroTuImgPlus"
+  },
+  "ZHUBEN": {
+    "id": "com.xiaoyu.yue"
+  },
+  "ZIP%E5%8E%8B%E7%BC%A9%E8%A7%A3%E5%8E%8B%E7%BC%A9%E5%B7%A5%E5%85%B7": {
+    "id": "com.mobislet.zipfile.yearly"
+  },
+  "ZJTBiaoGe": {
+    "id": "zhangjt.biaoge.monthvip"
+  },
+  "%E5%80%92%E6%94%BE%E6%8C%91%E6%88%98": {
+    "id": "com.abighead.ReverseChallenge.iap.pro.year"
+  },
+  "%E5%B0%8F%E5%B0%8F%E7%9B%B8%E6%9C%BA%E5%A4%A7%E5%B8%88": {
+    "id": "com.ai.merge.forever.vip"
+  },
+  "%E5%BD%95%E9%9F%B3%E4%B8%93%E4%B8%9A%E7%89%88": {
+    "id": "com.winat.recording.pro.yearly"
+  },
+  "%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8": {
+    "id": "com.mobislet.files.yearly"
+  },
+  "%E7%91%9C%E4%BC%BD": {
+    "id": "com.vgfit.yoga.yearly"
+  }
+}
