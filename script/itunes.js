@@ -20,24 +20,24 @@ const remote = "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/confi
     const resp = await new Promise((r) => $httpClient.get(remote, r));
     map = JSON.parse(resp?.data || "{}");
   } catch (e) {
-    console.log("subscriptionMap 加载失败:", e);
+    console.log("❌ subscriptionMap 加载失败:", e);
     $done({ body: JSON.stringify(body) });
     return;
   }
 
   const conf = map[encoded];
   if (!conf?.id) {
-    console.log(`未匹配订阅 ID: ${bundle}`);
+    console.log("⚠️ 未匹配订阅配置:", encoded);
     $done({ body: JSON.stringify(body) });
     return;
   }
 
-  const pid = conf.id;
-  const tid = "6600000000" + Math.floor(Math.random() * 1e8);
+  const ids = Array.isArray(conf.id) ? conf.id : [conf.id];
+  const tid = "66" + Math.floor(1e12 + Math.random() * 9e12);
 
   const item = {
     quantity: "1",
-    product_id: pid,
+    product_id: ids[0], // 强制返回第一个订阅 ID
     transaction_id: tid,
     original_transaction_id: tid,
     purchase_date_ms: `${now}`,
@@ -54,7 +54,7 @@ const remote = "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/confi
     },
     latest_receipt_info: [item],
     pending_renewal_info: [{
-      product_id: pid,
+      product_id: ids[0],
       auto_renew_status: "1"
     }],
     status: 0
