@@ -22,16 +22,19 @@ hostname = buy.itunes.apple.com
   const tid = "66" + Math.floor(1e12 + Math.random() * 9e12);
 
   // 尝试获取 bundle_id
-  let bundle = resBody?.receipt?.bundle_id || resBody?.receipt?.Bundle_Id || "*";
-  if (!bundle || typeof bundle !== "string" || bundle.length < 2) {
+  let bundle = resBody?.receipt?.bundle_id || resBody?.receipt?.Bundle_Id;
+  let encoded = "";
+
+  if (typeof bundle === "string" && bundle.length > 1) {
+    encoded = encodeURIComponent(bundle);
+    console.log("🧾 当前 bundle_id:", bundle);
+  } else {
+    encoded = "*";
+    bundle = "fake.bundle.id"; // fallback 时注入用默认 ID
     console.log("⚠️ 未检测到有效 bundle_id，将使用 fallback");
-    bundle = "*";
   }
 
-  const encoded = encodeURIComponent(bundle);
-  console.log("🧾 当前 bundle_id:", bundle);
-
-  // 加载远程 subscriptionMap
+  // 加载远程 subscriptionMap.json
   let map = {};
   try {
     const resp = await new Promise(r => $httpClient.get(remote, r));
@@ -45,7 +48,7 @@ hostname = buy.itunes.apple.com
   const conf = map[encoded] || map["*"];
 
   if (!conf?.id) {
-    console.log("❌ 无法匹配订阅 ID:", bundle);
+    console.log("❌ 无法匹配订阅 ID:", encoded);
     return $done({ body: JSON.stringify({ foo: "bar" }) });
   }
 
@@ -64,7 +67,7 @@ hostname = buy.itunes.apple.com
 
   const output = {
     receipt: {
-      bundle_id: bundle === "*" ? "fake.bundle.id" : bundle,
+      bundle_id: bundle,
       in_app: [item]
     },
     latest_receipt_info: [item],
