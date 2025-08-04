@@ -21,34 +21,34 @@ hostname = buy.itunes.apple.com
   const forever = 4102415999000;
   const tid = "66" + Math.floor(1e12 + Math.random() * 9e12);
 
-  // 尝试获取 bundle_id
-  let bundle = resBody?.receipt?.bundle_id || resBody?.receipt?.Bundle_Id;
-  let encoded = "";
-
-  if (typeof bundle === "string" && bundle.length > 1) {
-    encoded = encodeURIComponent(bundle);
-    console.log("🧾 当前 bundle_id:", bundle);
-  } else {
-    encoded = "*";
-    bundle = "fake.bundle.id"; // fallback 时注入用默认 ID
-    console.log("⚠️ 未检测到有效 bundle_id，将使用 fallback");
-  }
-
-  // 加载远程 subscriptionMap.json
+  // 加载远程 subscriptionMap
   let map = {};
   try {
     const resp = await new Promise(r => $httpClient.get(remote, r));
     map = JSON.parse(resp?.data || "{}");
   } catch (e) {
-    console.log("❌ 配置加载失败:", e);
+    console.log("❌ 远程配置加载失败:", e);
     return $done({ body: JSON.stringify(resBody) });
   }
 
+  // 提取 bundle_id
+  let bundle = resBody?.receipt?.bundle_id || resBody?.receipt?.Bundle_Id;
+  let conf;
+
+  if (typeof bundle === "string" && bundle.length > 1) {
+    console.log("🧾 当前 bundle_id:", bundle);
+    conf = map[bundle];
+  } else {
+    bundle = "fallback.bundle.id";
+    console.log("⚠️ 未检测到有效 bundle_id，将使用 fallback");
+    conf = map["*"];
+  }
+
   console.log("📦 配置 keys:", Object.keys(map));
-  const conf = map[encoded] || map["*"];
+  console.log("🧩 匹配到的配置:", conf);
 
   if (!conf?.id) {
-    console.log("❌ 无法匹配订阅 ID:", encoded);
+    console.log("❌ 最终无法匹配订阅 ID");
     return $done({ body: JSON.stringify({ foo: "bar" }) });
   }
 
