@@ -1,75 +1,78 @@
 /*
-
 [rewrite_local]
 ^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt$ url script-response-body https://raw.githubusercontent.com/Reviewa/QuantumultX/main/script/itunes.js
 
 [mitm]
 hostname = buy.itunes.apple.com
-
 */
 
-const raw = typeof $response.body === "string" ? JSON.parse($response.body) : $response.body || {};
-const bundle = raw?.receipt?.bundle_id || raw?.receipt?.Bundle_Id || "";
-const encoded = encodeURIComponent(bundle);
-const now = Date.now();
-const forever = 4102415999000;
-const tid = "66" + Math.floor(1e12 + Math.random() * 9e12);
+const remote = "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/config/subscriptionMap.json";
+const latestKey = "ddo"; // 统一结构 key
 
-// 常见 product_id 推测策略
-const candidates = [
-  `${bundle}.lifetime`,
-  `${bundle}.year`,
-  `${bundle}.yearly`,
-  `${bundle}.vip`,
-  `${bundle}.vip.year`,
-  `${bundle}.pro`,
-  `${bundle}.pro.year`,
-  `${bundle}.proSubYearly`,
-  `${bundle}.ultimate`,
-  "10012", // One Markdown fallback
-  "me.imgbase.intolive.proSubYearly", // intolive fallback
-];
+(async () => {
+  const raw = typeof $response?.body === "string" ? $response.body : "";
+  const body = raw ? JSON.parse(raw) : {};
+  const now = Date.now();
 
-// 静态匹配表（必要时继续扩展）
-const map = {
-  "com.onemore.markdown": "10012",  // One Markdown
-  "me.imgbase.intolive": "me.imgbase.intolive.proSubYearly",  // intolive
-  "*": "com.va.adBlocker.lifeTimefree"  // fallback
-};
+  const bundle = body?.receipt?.bundle_id || body?.receipt?.Bundle_Id || "";
+  if (!bundle) {
+    console.log("⚠️ 未检测到有效 bundle_id，将使用 fallback");
+  } else {
+    console.log("🧾 当前 bundle_id:", bundle);
+  }
 
-// 精确匹配或 fallback
-const fixed = map[bundle] || map[encoded] || map["*"];
-if (fixed) candidates.unshift(fixed);
+  let map = {};
+  try {
+    const resp = await new Promise((r) => $httpClient.get(remote, r));
+    map = JSON.parse(resp?.data || "{}");
+  } catch (e) {
+    console.log("⚠️ 加载 subscriptionMap 失败:", e);
+  }
 
-// 自动去重
-const uniq = [...new Set(candidates.filter(Boolean))];
+  const conf = map[encodeURIComponent(bundle)] || map[bundle] || map["*"] || null;
+  const pid = conf?.id;
+  const cm = conf?.cm || "default";
+  const hx = conf?.hx || "hxdefault";
+  const tid = hx + now;
 
-const item = (pid) => ({
-  quantity: "1",
-  product_id: pid,
-  transaction_id: tid,
-  original_transaction_id: tid,
-  purchase_date_ms: `${now}`,
-  original_purchase_date_ms: `${now}`,
-  expires_date_ms: `${forever}`,
-  is_trial_period: "false",
-  is_in_intro_offer_period: "false"
-});
+  if (!pid) {
+    console.log("❌ 无法匹配订阅 ID");
+    $done({ body: JSON.stringify(body) });
+    return;
+  }
 
-const products = uniq.map(item);
+  const dateOffset = cm === "timea" ? now - 20000 * 1000
+                    : cm === "timeb" ? now - 10000 * 1000
+                    : now;
 
-const result = {
-  receipt: {
-    bundle_id: bundle,
-    in_app: products
-  },
-  latest_receipt_info: products,
-  pending_renewal_info: products.map(i => ({
-    product_id: i.product_id,
-    auto_renew_status: "1"
-  })),
-  status: 0
-};
+  const exp = 4102415999000;
+  const item = {
+    quantity: "1",
+    product_id: pid,
+    transaction_id: tid,
+    original_transaction_id: tid,
+    purchase_date_ms: `${dateOffset}`,
+    original_purchase_date_ms: `${dateOffset}`,
+    expires_date_ms: `${exp}`,
+    is_trial_period: "false",
+    is_in_intro_offer_period: "false"
+  };
 
-console.log(`✅ 注入 ${products.length} 个订阅 ID -> ${bundle || "unknown"}`);
-$done({ body: JSON.stringify(result) });
+  const result = {
+    status: 0,
+    receipt: {
+      bundle_id: bundle,
+      in_app: [item]
+    },
+    latest_receipt_info: {
+      [latestKey]: item
+    },
+    pending_renewal_info: [{
+      product_id: pid,
+      auto_renew_status: "1"
+    }]
+  };
+
+  console.log("✅ 成功注入 product_id:", pid);
+  $done({ body: JSON.stringify(result) });
+})();
