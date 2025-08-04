@@ -32,7 +32,7 @@ hostname = buy.itunes.apple.com
     // 查找匹配 ID（支持 fallback）
     const conf = map[encoded] || map["*"];
     if (!conf?.id) {
-      console.log("❌ 无法匹配订阅 ID:", encoded, "| UA:", ua);
+      console.log("❌ 无法匹配订阅 ID:", encoded, "| map keys:", Object.keys(map));
       return $done({ body: JSON.stringify(resBody) });
     }
 
