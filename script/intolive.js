@@ -1,8 +1,10 @@
 /*
- * name: intoLive 通杀解锁
- * appstore: https://apps.apple.com/cn/app/id1061859052
- * 适配平台：Surge / QuantumultX / Loon
- */
+[rewrite_local]
+^https:\/\/api\.revenuecat\.com\/v\d\/subscribers\/ url script-response-body https://raw.githubusercontent.com/Reviewa/QuantumultX/main/script/intolive.js
+
+[mitm]
+hostname = api.revenuecat.com
+*/
 
 const list = [
   "me.imgbase.intolive.proSubWeekly",
