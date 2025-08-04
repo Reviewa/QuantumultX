@@ -1,14 +1,18 @@
 {
   "com.onemore.markdown": {
     "id": "10012",
-    "note": "One Markdown"
+    "cm": "timeb",
+    "hx": "hxpda"
   },
   "me.imgbase.intolive": {
     "id": "me.imgbase.intolive.proSubYearly",
-    "note": "intolive-实况壁纸"
+    "cm": "timea",
+    "hx": "hxpda"
   },
   "*": {
     "id": "com.va.adBlocker.lifeTimefree",
-    "note": "默认 fallback 通杀订阅"
+    "note": "默认 fallback",
+    "cm": "timeb",
+    "hx": "hxpda"
   }
 }
