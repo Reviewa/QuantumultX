@@ -9,70 +9,72 @@ hostname = buy.itunes.apple.com
 (async () => {
   const remote = "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/config/subscriptionMap.json";
 
+  let resBody;
   try {
-    const resBody = typeof $response?.body === "string" ? JSON.parse($response.body) : $response.body;
-    const headers = $request?.headers || {};
-    const ua = headers["User-Agent"] || headers["user-agent"] || "";
-
-    const bundle = resBody?.receipt?.bundle_id || resBody?.receipt?.Bundle_Id || "";
-    const encoded = encodeURIComponent(bundle);
-    const now = Date.now();
-    const forever = 4102415999000;
-    const tid = "66" + Math.floor(1e12 + Math.random() * 9e12);
-
-    // 拉取远程配置
-    let map = {};
-    try {
-      const resp = await new Promise(r => $httpClient.get(remote, r));
-      map = JSON.parse(resp?.data || "{}");
-    } catch (e) {
-      console.log("❌ 远程配置拉取失败:", e);
-    }
-
-    // 查找匹配 ID（支持 fallback）
-    const conf = map[encoded] || map["*"];
-    if (!conf?.id) {
-      console.log("❌ 无法匹配订阅 ID:", encoded, "| map keys:", Object.keys(map));
-      return $done({ body: JSON.stringify(resBody) });
-    }
-
-    // 构造订阅项目（4 种形式）
-    const ids = [
-      conf.id,
-      `${bundle}.year`,
-      `${bundle}.yearly`,
-      `${bundle}.lifetime`
-    ];
-
-    const items = ids.map(pid => ({
-      quantity: "1",
-      product_id: pid,
-      transaction_id: tid,
-      original_transaction_id: tid,
-      purchase_date_ms: `${now}`,
-      original_purchase_date_ms: `${now}`,
-      expires_date_ms: `${forever}`,
-      is_trial_period: "false",
-      is_in_intro_offer_period: "false"
-    }));
-
-    const result = {
-      receipt: {
-        bundle_id: bundle,
-        in_app: items
-      },
-      latest_receipt_info: items,
-      pending_renewal_info: ids.map(id => ({
-        product_id: id,
-        auto_renew_status: "1"
-      })),
-      status: 0
-    };
-
-    $done({ body: JSON.stringify(result) });
-
-  } catch (err) {
-    console.log("❌ 解锁脚本异常:", err);
-    $done({});
+    resBody = typeof $response?.body === "string" ? JSON.parse($response.body) : $response.body;
+  } catch (e) {
+    console.log("❌ 无法解析响应体:", e);
+    return $done({});
   }
+
+  const now = Date.now();
+  const forever = 4102415999000;
+  const tid = "66" + Math.floor(1e12 + Math.random() * 9e12);
+
+  // 尝试获取 bundle_id
+  let bundle = resBody?.receipt?.bundle_id || resBody?.receipt?.Bundle_Id || "*";
+  if (!bundle || typeof bundle !== "string" || bundle.length < 2) {
+    console.log("⚠️ 未检测到有效 bundle_id，将使用 fallback");
+    bundle = "*";
+  }
+
+  const encoded = encodeURIComponent(bundle);
+  console.log("🧾 当前 bundle_id:", bundle);
+
+  // 加载远程 subscriptionMap
+  let map = {};
+  try {
+    const resp = await new Promise(r => $httpClient.get(remote, r));
+    map = JSON.parse(resp?.data || "{}");
+  } catch (e) {
+    console.log("❌ 配置加载失败:", e);
+    return $done({ body: JSON.stringify(resBody) });
+  }
+
+  console.log("📦 配置 keys:", Object.keys(map));
+  const conf = map[encoded] || map["*"];
+
+  if (!conf?.id) {
+    console.log("❌ 无法匹配订阅 ID:", bundle);
+    return $done({ body: JSON.stringify({ foo: "bar" }) });
+  }
+
+  const pid = conf.id;
+  const item = {
+    quantity: "1",
+    product_id: pid,
+    transaction_id: tid,
+    original_transaction_id: tid,
+    purchase_date_ms: `${now}`,
+    original_purchase_date_ms: `${now}`,
+    expires_date_ms: `${forever}`,
+    is_trial_period: "false",
+    is_in_intro_offer_period: "false"
+  };
+
+  const output = {
+    receipt: {
+      bundle_id: bundle === "*" ? "fake.bundle.id" : bundle,
+      in_app: [item]
+    },
+    latest_receipt_info: [item],
+    pending_renewal_info: [{
+      product_id: pid,
+      auto_renew_status: "1"
+    }],
+    status: 0
+  };
+
+  console.log("✅ 注入成功:", pid);
+  $done({ body: JSON.stringify(output) });
 })();
