@@ -8,7 +8,7 @@
 - 支持 fallback 默认 ID 注入，提升解锁率
 
 [rewrite_local]
-^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt$ url script-response-body https://raw.githubusercontent.com/Reviewa/QuantumultX/main/script/itunes_static.js
+^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt$ url script-response-body https://raw.githubusercontent.com/Reviewa/QuantumultX/main/script/itunes.js
 
 [mitm]
 hostname = buy.itunes.apple.com
