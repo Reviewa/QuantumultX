@@ -4,10 +4,11 @@
     "note": "One Markdown"
   },
   "me.imgbase.intolive": {
-    "id": "me.imgbase.intolive.proSubYearly"
+    "id": "me.imgbase.intolive.proSubYearly",
+    "note": "intolive-实况壁纸"
   },
   "*": {
     "id": "com.va.adBlocker.lifeTimefree",
-    "note": "默认 fallback 通杀订阅"
+    "note": "默认 fallback"
   }
 }
