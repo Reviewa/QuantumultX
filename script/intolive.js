@@ -1,4 +1,8 @@
 /*
+名称intolive-实况壁纸制作器
+
+下载地址:https://apps.apple.com/cn/app/intolive-%E5%AE%9E%E5%86%B5%E5%A3%81%E7%BA%B8%E5%88%B6%E4%BD%9C%E5%99%A8/id1061859052
+
 [rewrite_local]
 ^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt$ url script-response-body https://raw.githubusercontent.com/Reviewa/QuantumultX/main/script/intolive.js
 
