@@ -1,51 +1,48 @@
 /*
+QuantumultX
 [rewrite_local]
-^https:\/\/api\.revenuecat\.com\/v\d\/subscribers\/ url script-response-body https://raw.githubusercontent.com/Reviewa/QuantumultX/main/script/intolive.js
+^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt$ url script-response-body https://raw.githubusercontent.com/Reviewa/QuantumultX/script/intolive.js
 
 [mitm]
-hostname = api.revenuecat.com
+hostname = buy.itunes.apple.com
 */
 
-const list = [
-  "me.imgbase.intolive.proSubWeekly",
-  "me.imgbase.intolive.proSubMonthly",
-  "me.imgbase.intolive.proSubYearly",
-  "me.imgbase.intolive.proSubYearly2024",
-  "me.imgbase.intolive.removead"
+let Qiq = JSON.parse($response.body);
+
+Qiq.status = 0;
+Qiq.environment = 'Production';
+
+Qiq.receipt = Qiq.receipt || {};
+Qiq.receipt.in_app = [
+  {
+    quantity: "1",
+    product_id: "me.imgbase.intolive.proSubYearly2024",
+    transaction_id: "666000666000666",
+    original_transaction_id: "666000666000666",
+    purchase_date: "2025-08-01 00:00:00 Etc/GMT",
+    purchase_date_ms: "1754006400000",
+    purchase_date_pst: "2025-07-31 17:00:00 America/Los_Angeles",
+    original_purchase_date: "2025-08-01 00:00:00 Etc/GMT",
+    original_purchase_date_ms: "1754006400000",
+    original_purchase_date_pst: "2025-07-31 17:00:00 America/Los_Angeles",
+    expires_date: "2099-12-31 23:59:59 Etc/GMT",
+    expires_date_ms: "4102415999000",
+    expires_date_pst: "2099-12-31 15:59:59 America/Los_Angeles",
+    is_in_intro_offer_period: "false",
+    is_trial_period: "false",
+    ownership_type: "PURCHASED",
+    web_order_line_item_id: "666000666000666"
+  }
 ];
 
-const now = Math.floor(Date.now() / 1000);
-const expire = now + 10 * 365 * 24 * 3600;
-
-const subscriptions = {};
-const entitlements = {};
-
-for (const id of list) {
-  subscriptions[id] = {
-    "expires_date": new Date(expire * 1000).toISOString(),
-    "original_purchase_date": new Date(now * 1000).toISOString(),
-    "purchase_date": new Date(now * 1000).toISOString(),
-    "ownership_type": "PURCHASED",
-    "store": "app_store"
-  };
-
-  entitlements[id] = {
-    "expires_date": new Date(expire * 1000).toISOString(),
-    "product_identifier": id,
-    "purchase_date": new Date(now * 1000).toISOString()
-  };
-}
-
-const body = {
-  "request_date": new Date(now * 1000).toISOString(),
-  "request_date_ms": now * 1000,
-  "subscriber": {
-    "entitlements": entitlements,
-    "first_seen": new Date(now * 1000).toISOString(),
-    "last_seen": new Date(now * 1000).toISOString(),
-    "original_app_user_id": "$RCAnonymousID:" + $persistentStore.read("intolive_id") || "random_" + Math.random().toString(36).substring(2),
-    "subscriptions": subscriptions
+Qiq.latest_receipt_info = Qiq.receipt.in_app;
+Qiq.pending_renewal_info = [
+  {
+    auto_renew_product_id: "me.imgbase.intolive.proSubYearly2024",
+    original_transaction_id: "666000666000666",
+    product_id: "me.imgbase.intolive.proSubYearly2024",
+    auto_renew_status: "1"
   }
-};
+];
 
-$done({ body: JSON.stringify(body) });
+$done({ body: JSON.stringify(Qiq) });
