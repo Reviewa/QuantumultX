@@ -11,7 +11,7 @@ const Qiq = {
   "environment": "Production",
   "receipt": {
     "receipt_type": "Production",
-    "bundle_id": "me.imgbase.intolive.proSubMonthly",
+    "bundle_id": "me.imgbase.intolive.proSubYearly",
     "in_app": [
       {
         "quantity": "1",
