@@ -1,78 +1,35 @@
 /*
 
 [rewrite_local]
-^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt url script-response-body https://raw.githubusercontent.com/Reviewa/QuantumultX/main/script/purelibro.js
+^https:\/\/api\.rc-backup\.com\/v1\/subscribers\/ url script-response-body https://raw.githubusercontent.com/Reviewa/QuantumultX/main/script/purelibro.js
 
 [mitm]
-hostname = buy.itunes.apple.com
+hostname = api.rc-backup.com
 
 */
 
-var Qiq = JSON.parse($response.body);
+let Qiq = JSON.parse($response.body);
 
-Qiq.receipt = {
-  "receipt_type": "Production",
-  "bundle_id": "com.purelibro.reader",
-  "in_app": [
-    {
-      "quantity": "1",
-      "product_id": "reader.lifetime.pro",
-      "transaction_id": "400000000000001",
-      "original_transaction_id": "400000000000001",
-      "purchase_date": "2025-08-06T08:00:00Z",
-      "original_purchase_date": "2025-08-06T08:00:00Z",
-      "expires_date": "2099-08-06T08:00:00Z"
-    },
-    {
-      "quantity": "1",
-      "product_id": "com.reader.autoRenewableMonth",
-      "transaction_id": "400000000000002",
-      "original_transaction_id": "400000000000002",
-      "purchase_date": "2025-08-06T08:00:00Z",
-      "original_purchase_date": "2025-08-06T08:00:00Z",
-      "expires_date": "2099-08-06T08:00:00Z"
-    },
-    {
-      "quantity": "1",
-      "product_id": "com.reader.autoRenewableSeason",
-      "transaction_id": "400000000000003",
-      "original_transaction_id": "400000000000003",
-      "purchase_date": "2025-08-06T08:00:00Z",
-      "original_purchase_date": "2025-08-06T08:00:00Z",
-      "expires_date": "2099-08-06T08:00:00Z"
-    },
-    {
-      "quantity": "1",
-      "product_id": "com.reader.permanentlyPro",
-      "transaction_id": "400000000000004",
-      "original_transaction_id": "400000000000004",
-      "purchase_date": "2025-08-06T08:00:00Z",
-      "original_purchase_date": "2025-08-06T08:00:00Z",
-      "expires_date": "2099-08-06T08:00:00Z"
-    },
-    {
-      "quantity": "1",
-      "product_id": "com.reader.autoRenewableYearly",
-      "transaction_id": "400000000000005",
-      "original_transaction_id": "400000000000005",
-      "purchase_date": "2025-08-06T08:00:00Z",
-      "original_purchase_date": "2025-08-06T08:00:00Z",
-      "expires_date": "2099-08-06T08:00:00Z"
-    },
-    {
-      "quantity": "1",
-      "product_id": "reader.lifetimeFamily.pro",
-      "transaction_id": "400000000000006",
-      "original_transaction_id": "400000000000006",
-      "purchase_date": "2025-08-06T08:00:00Z",
-      "original_purchase_date": "2025-08-06T08:00:00Z",
-      "expires_date": "2099-08-06T08:00:00Z"
-    }
-  ]
+Qiq.subscriber = Qiq.subscriber || {};
+Qiq.subscriber.entitlements = {
+  pro: {
+    expires_date: "2099-12-31T23:59:59Z",
+    product_identifier: "reader.lifetime.pro",
+    purchase_date: "2023-01-01T00:00:00Z"
+  }
 };
-
-Qiq.latest_receipt_info = Qiq.receipt.in_app;
-Qiq.latest_receipt = "base64_placeholder";
-Qiq.pending_renewal_info = [];
+Qiq.subscriber.original_purchase_date = "2023-01-01T00:00:00Z";
+Qiq.subscriber.subscriptions = {
+  "reader.lifetime.pro": {
+    billing_issues_detected_at: null,
+    expires_date: "2099-12-31T23:59:59Z",
+    is_sandbox: false,
+    original_purchase_date: "2023-01-01T00:00:00Z",
+    period_type: "lifetime",
+    purchase_date: "2023-01-01T00:00:00Z",
+    store: "app_store",
+    unsubscribe_detected_at: null
+  }
+};
 
 $done({ body: JSON.stringify(Qiq) });
