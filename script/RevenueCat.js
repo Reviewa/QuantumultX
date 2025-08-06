@@ -6,8 +6,8 @@
  * @github https://github.com/Reviewa/QuantumultX
 
  [rewrite_local]
-^https?:\/\/.+\.revenuecat\.com\/(v\d\/)?receipts$ url script-response-body https://raw.githubusercontent.com/Reviewa/QuantumultX/main/script/revenuecat-pro.js
-^https?:\/\/.+\.revenuecat\.com\/(v\d\/)?subscribers\/[^\/]+$ url script-response-body https://raw.githubusercontent.com/Reviewa/QuantumultX/main/script/revenueCat.js
+^https?:\/\/.+\.revenuecat\.com\/(v\d\/)?receipts$ url script-response-body https://raw.githubusercontent.com/Reviewa/QuantumultX/main/script/RevenueCat.js
+^https?:\/\/.+\.revenuecat\.com\/(v\d\/)?subscribers\/[^\/]+$ url script-response-body https://raw.githubusercontent.com/Reviewa/QuantumultX/main/script/RevenueCat.js
 
 [mitm]
 hostname = *.revenuecat.com
