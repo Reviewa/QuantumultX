@@ -3,6 +3,10 @@
   "description": "收集一些自己脚本用到的图标",
   "icons": [
     {
+      "name": "xuanfushizhong.png",
+      "url": "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/icon/xuanfushizhong.png"
+    },
+    {
       "name": "Loon.png",
       "url": "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/icon/Loon.png"
     },
