@@ -1,0 +1,9 @@
+#!name=intolive实况壁纸制作器
+#!desc=解锁vip4.3.3（484）
+#!icon=https://raw.githubusercontent.com/Reviewa/QuantumultX/main/icon/intolive.png
+
+[Script]
+intolive = type=http-response,pattern=^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt$,script-path=https://raw.githubusercontent.com/Reviewa/QuantumultX/main/script/intolive.js
+
+[MITM]
+hostname = buy.itunes.apple.com
