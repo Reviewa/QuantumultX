@@ -1,7 +1,8 @@
 /*
 
 [rewrite_local]
-^https:\/\/api\.rc-backup\.com\/v1\/subscribers\/ url script-response-body https://raw.githubusercontent.com/Reviewa/QuantumultX/main/script/purelibro.js
+^https:\/\/api\.rc-backup\.com\/v1\/subscribers\/.+\/offerings url script-response-body https://raw.githubusercontent.com/Reviewa/QuantumultX/main/script/hireader.js
+^https:\/\/api\.rc-backup\.com\/v1\/product_entitlement_mapping url script-response-body https://raw.githubusercontent.com/Reviewa/QuantumultX/main/script/hireader.js
 
 [mitm]
 hostname = api.rc-backup.com
@@ -13,100 +14,59 @@ let Qiq = {
   subscriber: {
     entitlements: {
       pro: {
-        grace_period_expires_date: null,
-        product_identifier: "reader.lifetime.pro",
-        purchase_date: "2023-01-01T00:00:00Z"
+        expires_date: "2099-09-09T09:09:09Z",
+        product_identifier: "HiReader_Annual",
+        purchase_date: "2020-09-09T09:09:09Z"
+      },
+      forever: {
+        expires_date: null,
+        product_identifier: "HiReader_Lifetime",
+        purchase_date: "2020-09-09T09:09:09Z"
       }
     },
-    first_seen: "2023-01-01T00:00:00Z",
-    last_seen: new Date().toISOString(),
+    first_seen: "2020-09-09T09:09:09Z",
     original_application_version: "1",
-    original_purchase_date: "2023-01-01T00:00:00Z",
+    original_purchase_date: "2020-09-09T09:09:09Z",
     other_purchases: {
-      "reader.lifetime.pro": {
-        purchase_date: "2023-01-01T00:00:00Z"
+      HiReader_Annual: {
+        purchase_date: "2020-09-09T09:09:09Z"
       },
-      "reader.lifetimeFamily.pro": {
-        purchase_date: "2023-01-01T00:00:00Z"
+      HiReader_Monthly: {
+        purchase_date: "2020-09-09T09:09:09Z"
       },
-      "com.reader.permanentlyPro": {
-        purchase_date: "2023-01-01T00:00:00Z"
-      },
-      "com.reader.autoRenewableYearly": {
-        purchase_date: "2023-01-01T00:00:00Z"
-      },
-      "com.reader.autoRenewableSeason": {
-        purchase_date: "2023-01-01T00:00:00Z"
-      },
-      "com.reader.autoRenewableMonth": {
-        purchase_date: "2023-01-01T00:00:00Z"
+      HiReader_Lifetime: {
+        purchase_date: "2020-09-09T09:09:09Z"
       }
     },
     management_url: null,
     subscriptions: {
-      "reader.lifetime.pro": {
+      HiReader_Annual: {
+        billing_issues_detected_at: null,
+        expires_date: "2099-09-09T09:09:09Z",
+        is_sandbox: false,
+        original_purchase_date: "2020-09-09T09:09:09Z",
+        period_type: "active",
+        purchase_date: "2020-09-09T09:09:09Z",
+        store: "app_store",
+        unsubscribe_detected_at: null
+      },
+      HiReader_Monthly: {
+        billing_issues_detected_at: null,
+        expires_date: "2099-09-09T09:09:09Z",
+        is_sandbox: false,
+        original_purchase_date: "2020-09-09T09:09:09Z",
+        period_type: "active",
+        purchase_date: "2020-09-09T09:09:09Z",
+        store: "app_store",
+        unsubscribe_detected_at: null
+      },
+      HiReader_Lifetime: {
         billing_issues_detected_at: null,
         expires_date: null,
         is_sandbox: false,
-        original_purchase_date: "2023-01-01T00:00:00Z",
-        ownership_type: "PURCHASED",
-        period_type: "normal",
-        purchase_date: "2023-01-01T00:00:00Z",
-        store: "app_store",
-        unsubscribe_detected_at: null
-      },
-      "reader.lifetimeFamily.pro": {
-        billing_issues_detected_at: null,
-        expires_date: null,
-        is_sandbox: false,
-        original_purchase_date: "2023-01-01T00:00:00Z",
-        ownership_type: "PURCHASED",
-        period_type: "normal",
-        purchase_date: "2023-01-01T00:00:00Z",
-        store: "app_store",
-        unsubscribe_detected_at: null
-      },
-      "com.reader.permanentlyPro": {
-        billing_issues_detected_at: null,
-        expires_date: null,
-        is_sandbox: false,
-        original_purchase_date: "2023-01-01T00:00:00Z",
-        ownership_type: "PURCHASED",
-        period_type: "normal",
-        purchase_date: "2023-01-01T00:00:00Z",
-        store: "app_store",
-        unsubscribe_detected_at: null
-      },
-      "com.reader.autoRenewableYearly": {
-        billing_issues_detected_at: null,
-        expires_date: "2099-12-31T23:59:59Z",
-        is_sandbox: false,
-        original_purchase_date: "2023-01-01T00:00:00Z",
-        ownership_type: "PURCHASED",
-        period_type: "normal",
-        purchase_date: "2023-01-01T00:00:00Z",
-        store: "app_store",
-        unsubscribe_detected_at: null
-      },
-      "com.reader.autoRenewableSeason": {
-        billing_issues_detected_at: null,
-        expires_date: "2099-12-31T23:59:59Z",
-        is_sandbox: false,
-        original_purchase_date: "2023-01-01T00:00:00Z",
-        ownership_type: "PURCHASED",
-        period_type: "normal",
-        purchase_date: "2023-01-01T00:00:00Z",
-        store: "app_store",
-        unsubscribe_detected_at: null
-      },
-      "com.reader.autoRenewableMonth": {
-        billing_issues_detected_at: null,
-        expires_date: "2099-12-31T23:59:59Z",
-        is_sandbox: false,
-        original_purchase_date: "2023-01-01T00:00:00Z",
-        ownership_type: "PURCHASED",
-        period_type: "normal",
-        purchase_date: "2023-01-01T00:00:00Z",
+        original_purchase_date: "2020-09-09T09:09:09Z",
+        period_type: "active",
+        purchase_date: "2020-09-09T09:09:09Z",
         store: "app_store",
         unsubscribe_detected_at: null
       }
