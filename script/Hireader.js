@@ -6,57 +6,59 @@
 hostname = buy.itunes.apple.com
 */
 
-let product_id = "HiReader_Lifetime"; // 也可以换成 HiReader_Annual、HiReader_Monthly
-let transaction_id = "1000000999999999";
-let timestamp = 32503626054000; // 2999年
+const product_id = "HiReader_Lifetime"; // 你可以改成 HiReader_Annual / HiReader_Monthly
+const transaction_id = "1000000999999999";
+const expire_time = 6707091199000; // 2999年
+const now = Date.now();
 
-let obj = {
+const toUTC = t => new Date(t).toUTCString();
+const toPST = t => new Date(t).toLocaleString("en-US", { timeZone: "America/Los_Angeles" });
+
+const receiptItem = {
+  quantity: "1",
+  product_id,
+  transaction_id,
+  original_transaction_id: transaction_id,
+  purchase_date: toUTC(now),
+  purchase_date_ms: `${now}`,
+  purchase_date_pst: toPST(now),
+  original_purchase_date: toUTC(now),
+  original_purchase_date_ms: `${now}`,
+  original_purchase_date_pst: toPST(now),
+  expires_date: toUTC(expire_time),
+  expires_date_ms: `${expire_time}`,
+  expires_date_pst: toPST(expire_time),
+  is_trial_period: "false",
+  in_app_ownership_type: "PURCHASED"
+};
+
+const body = {
   status: 0,
   environment: "Production",
   receipt: {
     receipt_type: "Production",
     bundle_id: "com.liangpin.hireader",
     application_version: "9999",
-    original_application_version: "1",
-    receipt_creation_date: "2999-09-09 09:09:09 Etc/GMT",
-    receipt_creation_date_ms: `${timestamp}`,
-    receipt_creation_date_pst: "2999-09-09 02:09:09 America/Los_Angeles",
-    request_date: "2999-09-09 09:09:09 Etc/GMT",
-    request_date_ms: `${timestamp}`,
-    request_date_pst: "2999-09-09 02:09:09 America/Los_Angeles",
-    original_purchase_date: "2020-01-01 00:00:00 Etc/GMT",
-    original_purchase_date_ms: "1577836800000",
-    original_purchase_date_pst: "2019-12-31 16:00:00 America/Los_Angeles",
-    in_app: [{
-      quantity: "1",
-      product_id: product_id,
-      transaction_id: transaction_id,
-      original_transaction_id: transaction_id,
-      purchase_date: "2999-09-09 09:09:09 Etc/GMT",
-      purchase_date_ms: `${timestamp}`,
-      purchase_date_pst: "2999-09-09 02:09:09 America/Los_Angeles",
-      original_purchase_date: "2999-09-09 09:09:09 Etc/GMT",
-      original_purchase_date_ms: `${timestamp}`,
-      original_purchase_date_pst: "2999-09-09 02:09:09 America/Los_Angeles",
-      is_trial_period: "false",
-      in_app_ownership_type: "PURCHASED"
-    }]
+    original_application_version: "1.0",
+    receipt_creation_date: toUTC(now),
+    receipt_creation_date_ms: `${now}`,
+    receipt_creation_date_pst: toPST(now),
+    request_date: toUTC(now),
+    request_date_ms: `${now}`,
+    request_date_pst: toPST(now),
+    original_purchase_date: toUTC(now),
+    original_purchase_date_ms: `${now}`,
+    original_purchase_date_pst: toPST(now),
+    in_app: [receiptItem]
   },
-  latest_receipt_info: [{
-    quantity: "1",
+  latest_receipt_info: [receiptItem],
+  pending_renewal_info: [{
+    auto_renew_product_id: product_id,
     product_id: product_id,
-    transaction_id: transaction_id,
     original_transaction_id: transaction_id,
-    purchase_date: "2999-09-09 09:09:09 Etc/GMT",
-    purchase_date_ms: `${timestamp}`,
-    purchase_date_pst: "2999-09-09 02:09:09 America/Los_Angeles",
-    original_purchase_date: "2999-09-09 09:09:09 Etc/GMT",
-    original_purchase_date_ms: `${timestamp}`,
-    original_purchase_date_pst: "2999-09-09 02:09:09 America/Los_Angeles",
-    is_trial_period: "false",
-    in_app_ownership_type: "PURCHASED"
+    auto_renew_status: "1"
   }],
   latest_receipt: "MIIFakeBase64=="
 };
 
-$done({ body: JSON.stringify(obj) });
+$done({ body: JSON.stringify(body) });
