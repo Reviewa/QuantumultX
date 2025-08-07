@@ -6,91 +6,96 @@
 hostname = buy.itunes.apple.com
 */
 
-const now = Date.now();
-const expiry = 6707091199000; // 2999年
-const UTC = t => new Date(t).toUTCString();
-const PST = t => new Date(t).toLocaleString("en-US", { timeZone: "America/Los_Angeles" });
-const tid = "1000000999999999";
-
-// App 识别配置：匹配关键字段 → 指定 product_id 和 bundle_id
-const appRules = [
-  {
-    keyword: ["timea", "hxpda"],
-    product_id: "com.reader.1year",
-    bundle_id: "com.liangpin.hireader"
+// App 匹配表：可添加多个 App
+const appMap = {
+  'BookReader': {
+    cm: 'timea',
+    hx: 'hxpda',
+    id: 'com.reader.1year',
+    latest: 'ddm1023'
   },
-  {
-    keyword: ["timeb", "hxpic"],
-    product_id: "com.zerone.hidesktop.forever",
-    bundle_id: "com.zerone.hidesktop"
-  }
-  // 你可以继续添加更多 App 规则
-];
+  'IScreen': {
+    cm: 'timeb',
+    hx: 'hxpic',
+    id: 'com.zerone.hidesktop.forever',
+    latest: 'screenmagic'
+  },
+  // 可继续添加其他 App 映射
+};
 
-const req = typeof $request.body === "string" ? $request.body : "";
-let appConfig = null;
+const reqBody = typeof $request.body === 'string' ? $request.body : '';
+let appMatch = null;
 
-// 自动匹配 App 配置
-for (let rule of appRules) {
-  if (rule.keyword.every(k => req.includes(k))) {
-    appConfig = rule;
+// 匹配关键字段：只要匹配上 cm 和 hx 的，就认为是对应 App
+for (const key in appMap) {
+  const app = appMap[key];
+  if (reqBody.includes(app.cm) && reqBody.includes(app.hx)) {
+    appMatch = app;
     break;
   }
 }
 
-// 如果未匹配成功，返回原始响应
-if (!appConfig) {
+// 没匹配到就返回原始数据
+if (!appMatch) {
   $done({});
   return;
 }
 
-// 构造单条内购数据
-const item = {
+// 构造基础信息
+const now = Date.now();
+const expire_ms = 6707091199000; // 2999年
+const utc = t => new Date(t).toUTCString();
+const pst = t => new Date(t).toLocaleString("en-US", { timeZone: "America/Los_Angeles" });
+const pid = appMatch.id;
+const tid = '1000000999999999';
+
+// 单条订阅结构
+const receiptItem = {
   quantity: "1",
-  product_id: appConfig.product_id,
+  product_id: pid,
   transaction_id: tid,
   original_transaction_id: tid,
-  purchase_date: UTC(now),
-  purchase_date_ms: `${now}`,
-  purchase_date_pst: PST(now),
-  original_purchase_date: UTC(now),
-  original_purchase_date_ms: `${now}`,
-  original_purchase_date_pst: PST(now),
-  expires_date: UTC(expiry),
-  expires_date_ms: `${expiry}`,
-  expires_date_pst: PST(expiry),
+  purchase_date: utc(now),
+  purchase_date_ms: now.toString(),
+  purchase_date_pst: pst(now),
+  original_purchase_date: utc(now),
+  original_purchase_date_ms: now.toString(),
+  original_purchase_date_pst: pst(now),
+  expires_date: utc(expire_ms),
+  expires_date_ms: expire_ms.toString(),
+  expires_date_pst: pst(expire_ms),
   is_trial_period: "false",
   in_app_ownership_type: "PURCHASED"
 };
 
-// 最终输出结构
-const result = {
+// 构造完整收据结构
+const obj = {
   status: 0,
   environment: "Production",
   receipt: {
     receipt_type: "Production",
-    bundle_id: appConfig.bundle_id,
+    bundle_id: "com.auto.match." + appMatch.latest,
     application_version: "9999",
-    original_application_version: "1.0",
-    receipt_creation_date: UTC(now),
-    receipt_creation_date_ms: `${now}`,
-    receipt_creation_date_pst: PST(now),
-    request_date: UTC(now),
-    request_date_ms: `${now}`,
-    request_date_pst: PST(now),
-    original_purchase_date: UTC(now),
-    original_purchase_date_ms: `${now}`,
-    original_purchase_date_pst: PST(now),
-    in_app: [item]
+    original_application_version: "1",
+    receipt_creation_date: utc(now),
+    receipt_creation_date_ms: now.toString(),
+    receipt_creation_date_pst: pst(now),
+    request_date: utc(now),
+    request_date_ms: now.toString(),
+    request_date_pst: pst(now),
+    original_purchase_date: utc(now),
+    original_purchase_date_ms: now.toString(),
+    original_purchase_date_pst: pst(now),
+    in_app: [receiptItem]
   },
-  latest_receipt_info: [item],
+  latest_receipt_info: [receiptItem],
   pending_renewal_info: [{
-    auto_renew_product_id: appConfig.product_id,
-    product_id: appConfig.product_id,
+    auto_renew_product_id: pid,
+    product_id: pid,
     original_transaction_id: tid,
     auto_renew_status: "1"
   }],
   latest_receipt: "MIIFakeUniversalReceiptBase64=="
 };
 
-$done({ body: JSON.stringify(result) });
+$done({ body: JSON.stringify(obj) });
