@@ -18,17 +18,13 @@ const apps = [
     match: ["timea", "hxpda"],
     bundle: "com.liangpin.hireader",
     product: "com.reader.1year"
-  },
+  },//HiReader阅读器
   {
     match: ["timeb", "hxpic"],
     bundle: "com.zerone.hidesktop",
     product: "com.zerone.hidesktop.forever"
-  },
+  },//iScreen-桌面小组件
   {
-    match: ["vippro", "video99"],
-    bundle: "com.example.videoeditor",
-    product: "com.videoeditor.premium"
-  }
 ];
 
 // 获取请求体（用字符串做匹配）
