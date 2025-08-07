@@ -45,16 +45,20 @@ function generateReceipt(bundleId, productId) {
   const fakePurchase = {
     quantity: "1",
     product_id: productId,
-    transaction_id: "1000000000000000",
-    original_transaction_id: "1000000000000000",
+    transaction_id: "999999999999999",
+    original_transaction_id: "999999999999999",
     purchase_date: "2999-09-09 09:09:09 Etc/GMT",
     purchase_date_ms: "32503626000000",
     purchase_date_pst: "2999-09-09 01:09:09 America/Los_Angeles",
     original_purchase_date: "2999-09-09 09:09:09 Etc/GMT",
     original_purchase_date_ms: "32503626000000",
     original_purchase_date_pst: "2999-09-09 01:09:09 America/Los_Angeles",
+    expires_date: "4092599349000", // 设置为极长时间
+    expires_date_ms: "4092599349000",
+    expires_date_pst: "2099-12-31 23:59:09 America/Los_Angeles",
     is_trial_period: "false",
-    in_app_ownership_type: "PURCHASED"
+    in_app_ownership_type: "PURCHASED",
+    web_order_line_item_id: "999999999999999"
   };
 
   return {
@@ -76,7 +80,8 @@ function generateReceipt(bundleId, productId) {
       original_purchase_date_pst: "2022-12-31 16:00:00 America/Los_Angeles",
       in_app: [fakePurchase]
     },
-    latest_receipt_info: [fakePurchase]
+    latest_receipt_info: [fakePurchase],
+    latest_receipt: "MIIFakeBase64ContentForIntolive=="
   };
 }
 
