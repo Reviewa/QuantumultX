@@ -22,7 +22,7 @@ const apps = [
   {
     match: ["intolive", "imgbase"],
     bundle: "me.imgbase.intolive",
-    product: "me.imgbase.intolive.proSubYearly"
+    product: "me.imgbase.intolive.proSubYearly2024"
   }
 ];
 
