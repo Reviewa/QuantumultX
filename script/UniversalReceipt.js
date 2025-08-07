@@ -25,6 +25,10 @@ const apps = [
     product: "com.zerone.hidesktop.forever"
   },//iScreen-桌面小组件
   {
+  match: ["intolive", "imgbase"],
+  bundle: "me.imgbase.intolive",
+  product: "me.imgbase.intolive.proSubYearly"
+}//intolive实况壁纸制作器
 ];
 
 // 获取请求体（用字符串做匹配）
