@@ -1,4 +1,4 @@
-/*******************************
+/*
 #!name=一同弹幕 VIP 解锁
 #!desc=解锁一同弹幕永久VIP
 #!author=bgcode🅥
@@ -10,7 +10,7 @@
 [mitm]
 hostname = ytbarrage.sky808.com
 
-*******************************/
+*/
 
 var obj = JSON.parse($response.body);
 
