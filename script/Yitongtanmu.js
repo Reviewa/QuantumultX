@@ -2,7 +2,6 @@
 #!name=一同弹幕 VIP 解锁
 #!desc=解锁一同弹幕永久VIP
 #!author=bgcode🅥
-*******************************/
 
 [rewrite_local]
 ^https?:\/\/ytbarrage\.sky808\.com\/api\/(user\?method=user_info|index\?method=login_phone) url script-response-body https://raw.githubusercontent.com/Reviewa/QuantumultX/main/script/Yitongtanmu.js
