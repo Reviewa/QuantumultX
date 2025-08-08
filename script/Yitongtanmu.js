@@ -5,7 +5,7 @@
 *******************************/
 
 [rewrite_local]
-^https?:\/\/ytbarrage\.sky808\.com\/api\/(user\?method=user_info|index\?method=login_phone) url script-response-body https://raw.githubusercontent.com/Reviewa/QuantumltX/main/Yitongtanmu.js
+^https?:\/\/ytbarrage\.sky808\.com\/api\/(user\?method=user_info|index\?method=login_phone) url script-response-body https://raw.githubusercontent.com/Reviewa/QuantumultX/main/script/Yitongtanmu.js
 
 [mitm]
 hostname = ytbarrage.sky808.com
