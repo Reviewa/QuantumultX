@@ -19,7 +19,7 @@ if ($request.url.includes("/api/user?method=user_info")) {
     obj.level = 3;
     obj.is_vip_test = true;
     obj.vip_start = 1700000000; // 2023
-    obj.vip_end = 6707091199;   // 永久
+    obj.vip_end = 4102415999000;   // 永久
     obj.vip_day = "9999";
 }
 
