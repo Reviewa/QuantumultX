@@ -10,13 +10,16 @@
 hostname = buy.itunes.apple.com
 */
 
-let Qiq = JSON.parse($response.body);
+let body = JSON.parse($response.body);
 
-Qiq.status = 0;
-Qiq.environment = 'Production';
+if (body.receipt.bundle_id !== "me.imgbase.intolive") {
+    $done({});
+}
 
-Qiq.receipt = Qiq.receipt || {};
-Qiq.receipt.in_app = [
+body.status = 0;
+body.environment = 'Production';
+body.receipt = body.receipt || {};
+body.receipt.in_app = [
   {
     quantity: "1",
     product_id: "me.imgbase.intolive.proSubYearly2024",
@@ -37,9 +40,8 @@ Qiq.receipt.in_app = [
     web_order_line_item_id: "666000666000666"
   }
 ];
-
-Qiq.latest_receipt_info = Qiq.receipt.in_app;
-Qiq.pending_renewal_info = [
+body.latest_receipt_info = body.receipt.in_app;
+body.pending_renewal_info = [
   {
     auto_renew_product_id: "me.imgbase.intolive.proSubYearly2024",
     original_transaction_id: "666000666000666",
@@ -48,4 +50,4 @@ Qiq.pending_renewal_info = [
   }
 ];
 
-$done({ body: JSON.stringify(Qiq) });
+$done({ body: JSON.stringify(body) });
