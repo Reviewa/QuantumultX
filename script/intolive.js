@@ -12,42 +12,41 @@ hostname = buy.itunes.apple.com
 
 let body = JSON.parse($response.body);
 
-if (body.receipt.bundle_id !== "me.imgbase.intolive") {
-    $done({});
-}
+if (body.receipt && body.receipt.bundle_id === "me.imgbase.intolive") {
+    body.status = 0;
+    body.environment = "Production";
 
-body.status = 0;
-body.environment = 'Production';
-body.receipt = body.receipt || {};
-body.receipt.in_app = [
-  {
-    quantity: "1",
-    product_id: "me.imgbase.intolive.proSubYearly2024",
-    transaction_id: "666000666000666",
-    original_transaction_id: "666000666000666",
-    purchase_date: "2025-08-01 00:00:00 Etc/GMT",
-    purchase_date_ms: "1754006400000",
-    purchase_date_pst: "2025-07-31 17:00:00 America/Los_Angeles",
-    original_purchase_date: "2025-08-01 00:00:00 Etc/GMT",
-    original_purchase_date_ms: "1754006400000",
-    original_purchase_date_pst: "2025-07-31 17:00:00 America/Los_Angeles",
-    expires_date: "2099-12-31 23:59:59 Etc/GMT",
-    expires_date_ms: "4102415999000",
-    expires_date_pst: "2099-12-31 15:59:59 America/Los_Angeles",
-    is_in_intro_offer_period: "false",
-    is_trial_period: "false",
-    ownership_type: "PURCHASED",
-    web_order_line_item_id: "666000666000666"
-  }
-];
-body.latest_receipt_info = body.receipt.in_app;
-body.pending_renewal_info = [
-  {
-    auto_renew_product_id: "me.imgbase.intolive.proSubYearly2024",
-    original_transaction_id: "666000666000666",
-    product_id: "me.imgbase.intolive.proSubYearly2024",
-    auto_renew_status: "1"
-  }
-];
+    body.receipt.in_app = [
+        {
+            quantity: "1",
+            product_id: "me.imgbase.intolive.proSubYearly2024",
+            transaction_id: "666000666000666",
+            original_transaction_id: "666000666000666",
+            purchase_date: "2025-08-01 00:00:00 Etc/GMT",
+            purchase_date_ms: "1754006400000",
+            purchase_date_pst: "2025-07-31 17:00:00 America/Los_Angeles",
+            original_purchase_date: "2025-08-01 00:00:00 Etc/GMT",
+            original_purchase_date_ms: "1754006400000",
+            original_purchase_date_pst: "2025-07-31 17:00:00 America/Los_Angeles",
+            expires_date: "2099-12-31 23:59:59 Etc/GMT",
+            expires_date_ms: "4102415999000",
+            expires_date_pst: "2099-12-31 15:59:59 America/Los_Angeles",
+            is_in_intro_offer_period: "false",
+            is_trial_period: "false",
+            ownership_type: "PURCHASED",
+            web_order_line_item_id: "666000666000666"
+        }
+    ];
+
+    body.latest_receipt_info = body.receipt.in_app;
+    body.pending_renewal_info = [
+        {
+            auto_renew_product_id: "me.imgbase.intolive.proSubYearly2024",
+            original_transaction_id: "666000666000666",
+            product_id: "me.imgbase.intolive.proSubYearly2024",
+            auto_renew_status: "1"
+        }
+    ];
+}
 
 $done({ body: JSON.stringify(body) });
