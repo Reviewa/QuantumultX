@@ -8,43 +8,43 @@ hostname = buy.itunes.apple.com
 
 */
 
-let body = {
-    receipt: {
-        receipt_type: "Production",
-        app_item_id: 989843523,
-        bundle_id: "me.imgbase.imgplay",
-        in_app: [
-            {
-                quantity: "1",
-                product_id: "me.imgbase.imgplay.subscriptionYearly",
-                transaction_id: "666666666666666",
-                original_transaction_id: "666666666666666",
-                purchase_date: "2025-08-16 18:01:12 Etc/GMT",
-                purchase_date_ms: "1755367272000",
-                purchase_date_pst: "2025-08-16 11:01:12 America/Los_Angeles",
-                original_purchase_date: "2025-08-16 18:01:12 Etc/GMT",
-                original_purchase_date_ms: "1755367272000",
-                original_purchase_date_pst: "2025-08-16 11:01:12 America/Los_Angeles",
-                expires_date: "2099-12-31 23:59:59 Etc/GMT",
-                expires_date_ms: "4102444799000",
-                expires_date_pst: "2099-12-31 15:59:59 America/Los_Angeles",
-                is_trial_period: "false",
-                in_app_ownership_type: "PURCHASED"
-            }
-        ],
-        receipt_creation_date: "2025-08-16 18:01:12 Etc/GMT",
-        receipt_creation_date_ms: "1755367272000",
-        receipt_creation_date_pst: "2025-08-16 11:01:12 America/Los_Angeles",
-        original_purchase_date: "2025-08-16 18:01:12 Etc/GMT",
-        original_purchase_date_ms: "1755367272000",
-        original_purchase_date_pst: "2025-08-16 11:01:12 America/Los_Angeles",
-        application_version: "545",
-        original_application_version: "487",
-        download_id: 502739727410839001,
-        adam_id: 989843523
-    },
-    status: 0,
-    environment: "Production"
-};
+let body = JSON.parse($response.body);
+
+body.status = 0;
+body.environment = 'Production';
+
+body.receipt = body.receipt || {};
+body.receipt.in_app = [
+  {
+    quantity: "1",
+    product_id: "me.imgbase.imgplay.subscriptionYearly",
+    transaction_id: "666000666000666",
+    original_transaction_id: "666000666000666",
+    purchase_date: "2025-08-16 00:00:00 Etc/GMT",
+    purchase_date_ms: "1755360000000",
+    purchase_date_pst: "2025-08-15 17:00:00 America/Los_Angeles",
+    original_purchase_date: "2025-08-16 00:00:00 Etc/GMT",
+    original_purchase_date_ms: "1755360000000",
+    original_purchase_date_pst: "2025-08-15 17:00:00 America/Los_Angeles",
+    expires_date: "2099-12-31 23:59:59 Etc/GMT",
+    expires_date_ms: "4102444799000",
+    expires_date_pst: "2099-12-31 15:59:59 America/Los_Angeles",
+    is_in_intro_offer_period: "false",
+    is_trial_period: "false",
+    ownership_type: "PURCHASED",
+    web_order_line_item_id: "666000666000666"
+  }
+];
+
+body.latest_receipt_info = body.receipt.in_app;
+
+body.pending_renewal_info = [
+  {
+    auto_renew_product_id: "me.imgbase.imgplay.subscriptionYearly",
+    original_transaction_id: "666000666000666",
+    product_id: "me.imgbase.imgplay.subscriptionYearly",
+    auto_renew_status: "1"
+  }
+];
 
 $done({ body: JSON.stringify(body) });
