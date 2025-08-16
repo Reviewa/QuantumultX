@@ -18,8 +18,8 @@ body.receipt.in_app = [
   {
     quantity: "1",
     product_id: "me.imgbase.imgplay.subscriptionYearly",
-    transaction_id: "666000666000666",
-    original_transaction_id: "666000666000666",
+    transaction_id: "imgplay_2025_unique_001",            // ImgPlay 专属唯一交易ID
+    original_transaction_id: "imgplay_2025_unique_001",   // ImgPlay 专属原始交易ID
     purchase_date: "2025-08-16 00:00:00 Etc/GMT",
     purchase_date_ms: "1755360000000",
     purchase_date_pst: "2025-08-15 17:00:00 America/Los_Angeles",
@@ -32,7 +32,7 @@ body.receipt.in_app = [
     is_in_intro_offer_period: "false",
     is_trial_period: "false",
     ownership_type: "PURCHASED",
-    web_order_line_item_id: "666000666000666"
+    web_order_line_item_id: "imgplay_2025_unique_001"     // ImgPlay 专属唯一订单ID
   }
 ];
 
@@ -41,7 +41,7 @@ body.latest_receipt_info = body.receipt.in_app;
 body.pending_renewal_info = [
   {
     auto_renew_product_id: "me.imgbase.imgplay.subscriptionYearly",
-    original_transaction_id: "666000666000666",
+    original_transaction_id: "imgplay_2025_unique_001",
     product_id: "me.imgbase.imgplay.subscriptionYearly",
     auto_renew_status: "1"
   }
