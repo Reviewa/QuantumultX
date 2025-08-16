@@ -1,10 +1,13 @@
 /*
+
 [rewrite_local]
-https:\/\/buy\.itunes\.apple\.com\/verifyReceipt url script-response-body https://raw.githubusercontent.com/Reviewa/QuantumultX/main/script/ImgPlay.ja
+^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt url script-response-body https://raw.githubusercontent.com/Reviewa/QuantumultX/main/script/ImgPlay.ja
 
 [mitm]
 hostname = buy.itunes.apple.com
+
 */
+
 let body = {
     receipt: {
         receipt_type: "Production",
