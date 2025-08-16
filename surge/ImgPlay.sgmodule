@@ -1,0 +1,8 @@
+#!name=ImgPlay
+#!desc=解锁vip
+
+[Script]
+ImgPlay = type=http-response, pattern=^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt, script-path=https://raw.githubusercontent.com/Reviewa/QuantumultX/main/script/ImgPlay.ja, requires-body=true, max-size=-1, timeout=60
+
+[MITM]
+hostname = %APPEND% buy.itunes.apple.com
