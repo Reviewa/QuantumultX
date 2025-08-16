@@ -10,9 +10,12 @@ hostname = buy.itunes.apple.com
 
 let body = JSON.parse($response.body);
 
+if (body.receipt.bundle_id !== "me.imgbase.imgplay") {
+    $done({});
+}
+
 body.status = 0;
 body.environment = 'Production';
-
 body.receipt = body.receipt || {};
 body.receipt.in_app = [
   {
@@ -35,7 +38,6 @@ body.receipt.in_app = [
     web_order_line_item_id: "777000777000777"
   }
 ];
-
 body.latest_receipt_info = body.receipt.in_app;
 body.pending_renewal_info = [
   {
