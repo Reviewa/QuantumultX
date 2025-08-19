@@ -1,4 +1,4 @@
-/**
+/*
  * 书香门第(txtnovel.vip)自动签到脚本
  * 环境变量: TXTNOVEL_COOKIE
  * 功能: 自动获取formhash并完成签到
