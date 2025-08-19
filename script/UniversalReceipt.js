@@ -6,95 +6,83 @@
 hostname = buy.itunes.apple.com
 */
 
-const now = Date.now();
-const expireAt = 6707091199000; // 2999年
-const toUTC = t => new Date(t).toUTCString();
-const toPST = t => new Date(t).toLocaleString("en-US", { timeZone: "America/Los_Angeles" });
-const txn = "1000000999999999";
+const now = Date.now()
+const toUTC = t => new Date(t).toUTCString()
+const toPST = t => new Date(t).toLocaleString("en-US", { timeZone: "America/Los_Angeles" })
 
-// 可支持多个 App，根据请求体关键词判断
-const apps = [
-  {
-    match: ["timea", "hxpda"],
-    bundle: "com.liangpin.hireader",
-    product: "com.reader.1year"
-  },//HiReader阅读器
-  {
-    match: ["timeb", "hxpic"],
-    bundle: "com.zerone.hidesktop",
-    product: "com.zerone.hidesktop.forever"
-  },//iScreen-桌面小组件
-  {
-  match: ["intolive", "imgbase"],
-  bundle: "me.imgbase.intolive",
-  product: "me.imgbase.intolive.proSubYearly"
-}//intolive实况壁纸制作器
-];
-
-// 获取请求体（用字符串做匹配）
-const bodyText = typeof $request.body === "string" ? $request.body : "";
-let matched = null;
-
-for (const app of apps) {
-  if (app.match.every(key => bodyText.includes(key))) {
-    matched = app;
-    break;
+const apps = {
+  "me.imgbase.intolive": {
+    product_id: "me.imgbase.intolive.proSubYearly2024",
+    transaction_id: "666000666000666",
+    expire_time: 4102415999000
+  },
+  "me.imgbase.imgplay": {
+    product_id: "me.imgbase.imgplay.subscriptionYearly",
+    transaction_id: "777000777000777",
+    expire_time: 4102415999000
+  },
+  "com.liangpin.hireader": {
+    product_id: "HiReader_Lifetime",
+    transaction_id: "888000888000888",
+    expire_time: 32503651199000
+  },
+  "com.zerone.hidesktop": {
+    product_id: "com.zerone.hidesktop.forever",
+    transaction_id: "999000999000999",
+    expire_time: 32503626054000
   }
 }
 
-if (!matched) {
-  // 匹配失败则忽略，不响应
-  $done({});
-  return;
-}
+let body = JSON.parse($response.body)
+let bundle_id = body?.receipt?.bundle_id
 
-// 构造 in_app 订阅数据
-const sub = {
-  quantity: "1",
-  product_id: matched.product,
-  transaction_id: txn,
-  original_transaction_id: txn,
-  purchase_date: toUTC(now),
-  purchase_date_ms: `${now}`,
-  purchase_date_pst: toPST(now),
-  original_purchase_date: toUTC(now),
-  original_purchase_date_ms: `${now}`,
-  original_purchase_date_pst: toPST(now),
-  expires_date: toUTC(expireAt),
-  expires_date_ms: `${expireAt}`,
-  expires_date_pst: toPST(expireAt),
-  is_trial_period: "false",
-  in_app_ownership_type: "PURCHASED"
-};
-
-// 构造完整响应体
-const output = {
-  status: 0,
-  environment: "Production",
-  receipt: {
-    receipt_type: "Production",
-    bundle_id: matched.bundle,
-    application_version: "9999",
-    original_application_version: "1.0",
-    receipt_creation_date: toUTC(now),
-    receipt_creation_date_ms: `${now}`,
-    receipt_creation_date_pst: toPST(now),
-    request_date: toUTC(now),
-    request_date_ms: `${now}`,
-    request_date_pst: toPST(now),
+if (bundle_id && apps[bundle_id]) {
+  const app = apps[bundle_id]
+  const receiptItem = {
+    quantity: "1",
+    product_id: app.product_id,
+    transaction_id: app.transaction_id,
+    original_transaction_id: app.transaction_id,
+    purchase_date: toUTC(now),
+    purchase_date_ms: `${now}`,
+    purchase_date_pst: toPST(now),
     original_purchase_date: toUTC(now),
     original_purchase_date_ms: `${now}`,
     original_purchase_date_pst: toPST(now),
-    in_app: [sub]
-  },
-  latest_receipt_info: [sub],
-  pending_renewal_info: [{
-    auto_renew_product_id: matched.product,
-    product_id: matched.product,
-    original_transaction_id: txn,
-    auto_renew_status: "1"
-  }],
-  latest_receipt: "MIIFakeBase64Universal=="
-};
+    expires_date: toUTC(app.expire_time),
+    expires_date_ms: `${app.expire_time}`,
+    expires_date_pst: toPST(app.expire_time),
+    is_trial_period: "false",
+    in_app_ownership_type: "PURCHASED"
+  }
+  body = {
+    status: 0,
+    environment: "Production",
+    receipt: {
+      receipt_type: "Production",
+      bundle_id: bundle_id,
+      application_version: "9999",
+      original_application_version: "1.0",
+      receipt_creation_date: toUTC(now),
+      receipt_creation_date_ms: `${now}`,
+      receipt_creation_date_pst: toPST(now),
+      request_date: toUTC(now),
+      request_date_ms: `${now}`,
+      request_date_pst: toPST(now),
+      original_purchase_date: toUTC(now),
+      original_purchase_date_ms: `${now}`,
+      original_purchase_date_pst: toPST(now),
+      in_app: [receiptItem]
+    },
+    latest_receipt_info: [receiptItem],
+    pending_renewal_info: [{
+      auto_renew_product_id: app.product_id,
+      product_id: app.product_id,
+      original_transaction_id: app.transaction_id,
+      auto_renew_status: "1"
+    }],
+    latest_receipt: "MIIFakeBase64=="
+  }
+}
 
-$done({ body: JSON.stringify(output) });
+$done({ body: JSON.stringify(body) })
