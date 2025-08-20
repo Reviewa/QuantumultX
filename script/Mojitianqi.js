@@ -8,55 +8,66 @@ hostname = *.api.moji.com
 
 */
 
-var obj = JSON.parse($response.body)
+let o = JSON.parse($response.body)
+let u = $request.url
 
-if ($request.url.includes('/sns/json/profile/get_info')) {
-  obj.is_vip = 1
-  obj.type = 7
-  obj.grade = 1
-  obj.is_adver_free = 0
-  obj.expire_time = 4092599349000
-  obj.member_type = 1
-  obj.member_level = 1
-  obj.max_expiration_days = 9999999
-  obj.is_expire = 0
-  obj.remain_day = 9999999
-  obj.inkrity = 9999999
-  obj.status = 1
-  obj.is_purchase = true
+if (u.includes("get_info")) {
+  Object.assign(o, {
+    is_vip: 1,
+    type: 7,
+    grade: 1,
+    is_adver_free: 0,
+    expire_time: 4092599349000,
+    member_type: 1,
+    member_level: 1,
+    max_expiration_days: 9999999,
+    is_expire: 0,
+    remain_day: 9999999,
+    inkrity: 9999999,
+    status: 1,
+    is_purchase: true
+  })
 }
 
-if ($request.url.includes('/json/member_new/homepage_info')) {
-  obj.userTips = ["将在2099-09-09到期"]
-  obj.user_tips = ["将在2099-09-09到期"]
-  obj.is_member = true
-  if (obj.user_member_info) {
-    obj.user_member_info.vip = 1
-    obj.user_member_info.is_auto_member = 1
+if (u.includes("homepage_info")) {
+  Object.assign(o, {
+    userTips: ["到期时间：2099-09-09"],
+    user_tips: ["到期时间：2099-09-09"],
+    is_member: true
+  })
+  if (o.user_member_info) {
+    Object.assign(o.user_member_info, {
+      vip: 1,
+      is_auto_member: 1
+    })
   }
 }
 
-if ($request.url.includes('/user/personal/json/profile')) {
-  if (obj.personal_profile) {
-    obj.personal_profile.inkrity = 9999999
-    obj.personal_profile.is_vip = true
-    obj.personal_profile.grade = 1
-    obj.personal_profile.user_flag = true
+if (u.includes("profile")) {
+  if (o.personal_profile) {
+    Object.assign(o.personal_profile, {
+      inkrity: 9999999,
+      is_vip: true,
+      grade: 1,
+      user_flag: true
+    })
   }
 }
 
-if ($request.url.includes('/flycard/novice')) {
-  if (obj.data && obj.data.novice) {
-    obj.data.novice.adShow = 0
-    obj.data.novice.expireTime = 4092599349000
-    obj.data.novice.vipShow = 1
+if (u.includes("novice")) {
+  if (o.data?.novice) {
+    Object.assign(o.data.novice, {
+      adShow: 0,
+      expireTime: 4092599349000,
+      vipShow: 1
+    })
   }
 }
 
-if ($request.url.includes('/shortvideo')) {
-  obj.item_list = []
-  obj.rcmList = []
-  obj.add_card_list = []
+if (u.includes("shortvideo")) {
+  o.item_list = []
+  o.rcmList = []
+  o.add_card_list = []
 }
 
-$done({ body: JSON.stringify(obj) })
+$done({ body: JSON.stringify(o) })
