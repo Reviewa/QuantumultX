@@ -8,94 +8,62 @@ hostname = *.api.moji.com
 
 */
 
-let body = JSON.parse($response.body)
+let obj = JSON.parse($response.body)
 let url = $request.url
 
-function genExpire() {
-  return new Date("2099-12-31T23:59:59Z").getTime()
+const longExpire = 4092599349000
+const dateStr = "2099-09-09到期"
+
+if (url.includes("/sns/json/profile/get_info")) {
+  obj.is_vip = 1
+  obj.type = 7
+  obj.grade = 1
+  obj.is_adver_free = 1
+  obj.expire_time = longExpire
+  obj.member_type = 1
+  obj.member_level = 1
+  obj.max_expiration_days = 9999999
+  obj.is_expire = 0
+  obj.remain_day = 9999999
+  obj.inkrity = 9999999
+  obj.status = 1
+  obj.is_purchase = true
 }
 
-function genTid() {
-  return String(Math.floor(1e15 + Math.random() * 9e15)) // 16位数字
-}
-
-let expire = genExpire()
-let tid = genTid()
-
-const rules = [
-  {
-    key: "/sns/json/profile/get_info",
-    action: d => {
-      Object.assign(d, {
-        is_vip: 1,
-        member_type: 1,
-        vip_expire_time: expire,
-        is_year_vip: 1,
-        is_purchase: true,
-        grade: 1,
-        level: 7,
-        is_follow_vip: 1,
-        transaction_id: tid,
-        original_transaction_id: tid
-      })
-    }
-  },
-  {
-    key: "/json/member_new/homepage_info",
-    action: d => {
-      d.vip_types = ["normal_vip"]
-      d.expire_descs = ["将在2099-12-31到期"]
-      d.is_member = true
-      if (d.user_member_info) {
-        d.user_member_info.is_member = 1
-        d.user_member_info.expire_time = expire
-        d.user_member_info.transaction_id = tid
-      }
-    }
-  },
-  {
-    key: "/sns/json/personal/info",
-    action: d => {
-      if (d.personal_profile) {
-        Object.assign(d.personal_profile, {
-          vip_expire_time: expire,
-          is_vip_user: true,
-          is_follow_vip: 1,
-          is_year_vip: true,
-          transaction_id: tid
-        })
-      }
-    }
-  },
-  {
-    key: "/flycard/novice",
-    action: d => {
-      if (d.data?.novice) {
-        Object.assign(d.data.novice, {
-          adShow: 0,
-          vip_expire_time: expire,
-          is_year_vip: 1,
-          transaction_id: tid
-        })
-      }
-    }
-  },
-  {
-    key: "/shortvideo",
-    action: d => {
-      d.item_list = []
-      d.rcmList = []
-      d.feeds = []
-      d.add_card_list = []
-    }
-  }
-]
-
-for (let r of rules) {
-  if (url.includes(r.key)) {
-    r.action(body)
-    break
+if (url.includes("/json/member_new/homepage_info")) {
+  obj.userTips = [dateStr]
+  obj.user_tips = [dateStr]
+  obj.is_member = true
+  if (obj.user_member_info) {
+    obj.user_member_info.vip = 1
+    obj.user_member_info.is_auto_member = 1
+    obj.user_member_info.expire_time = longExpire
   }
 }
 
-$done({ body: JSON.stringify(body) })
+if (url.includes("/user/personal/json/profile")) {
+  if (obj.personal_profile) {
+    obj.personal_profile.inkrity = 9999999
+    obj.personal_profile.is_vip = true
+    obj.personal_profile.grade = 1
+    obj.personal_profile.user_flag = true
+    obj.personal_profile.vip_expire_time = longExpire
+  }
+}
+
+if (url.includes("/flycard/novice")) {
+  if (obj.data?.novice) {
+    obj.data.novice.adShow = 0
+    obj.data.novice.expireTime = longExpire
+    obj.data.novice.vipShow = 1
+  }
+}
+
+if (url.includes("/shortvideo")) {
+  obj.item_list = []
+  obj.rcmList = []
+  obj.add_card_list = []
+  obj.feeds = []
+}
+
+$done({ body: JSON.stringify(obj) })
