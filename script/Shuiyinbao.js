@@ -16,6 +16,8 @@ if (obj && obj.data) {
   obj.data.is_buy = 1;
   obj.data.grade = 1;
   obj.data.level_expire = 4102415999;
+  obj.data.mobile = "One more time";
+  obj.data.nickname = "One more time";
 }
 
 $done({ body: JSON.stringify(obj) });
