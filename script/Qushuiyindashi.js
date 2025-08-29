@@ -17,12 +17,14 @@ let obj = JSON.parse(body);
 // ------------------ VIP 接口统一处理 ------------------
 if (obj.vipInfo) {
     obj.vipInfo.vip_exp = 999999999;
+    obj.vipInfo.coins = 99999;     
     obj.vipInfo.unmark = 1;
     obj.vipInfo.out_time = "2099-12-31 23:59:59";
 }
 
 if (obj.userInfo) {
     obj.userInfo.nickName = "One more time";
+    obj.userInfo.coin = "99999";    
 }
 
 // ------------------ 应用配置接口统一处理 ------------------
