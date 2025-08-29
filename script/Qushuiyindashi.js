@@ -14,7 +14,6 @@ hostname = wx.520gyh.com
 let body = $response.body;
 let obj = JSON.parse(body);
 
-// ------------------ VIP 接口统一处理 ------------------
 if (obj.vipInfo) {
     obj.vipInfo.vip_exp = 999999999;
     obj.vipInfo.coins = 99999;     
@@ -27,7 +26,6 @@ if (obj.userInfo) {
     obj.userInfo.coin = "99999";    
 }
 
-// ------------------ 应用配置接口统一处理 ------------------
 if (obj.cfg) {
     obj.cfg.freeVip = 1;
     obj.cfg.unmark = 1;
