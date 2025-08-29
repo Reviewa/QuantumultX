@@ -12,6 +12,9 @@ hostname = newappapi.fntmob.com
 
 */
 
+let body = $response.body;
+let obj = JSON.parse(body);
+
 if (obj && obj.data) {
   obj.data.is_vip = 1;
   obj.data.is_buy = 1;
@@ -19,5 +22,6 @@ if (obj && obj.data) {
   obj.data.level_expire = 4102415999;
   obj.data.mobile = "One more time";
   obj.data.nickname = "One more time";
-  obj.data.vip_text = "永久会员";
 }
+
+$done({ body: JSON.stringify(obj) });
