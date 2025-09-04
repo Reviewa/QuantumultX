@@ -1,7 +1,7 @@
 /*
 
 [rewrite_local]
-^https?:\/\/api\.revenuecat\.com\/v1\/subscribers\/\S+\/offerings url script-response-body https://raw.githubusercontent.com/Reviewa/QuantumltX/main/Python.js
+^https?:\/\/api\.revenuecat\.com\/v1\/subscribers\/\S+\/offerings url script-response-body https://raw.githubusercontent.com/Reviewa/QuantumltX/main/script/Python.js
 
 [mitm]
 hostname = api.revenuecat.com
