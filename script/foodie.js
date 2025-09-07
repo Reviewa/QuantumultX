@@ -5,7 +5,7 @@
 #!author=bgcode🅥
 
 [rewrite_local]
-^https:\/\/purchase-foodiecn-api\.yiruikecorp\.com\/v1\/purchase\/subscription\/subscriber\/status url script-response-body https://raw.githubusercontent.com/Reviewa/QuantumltX/main/foodie.js
+^https:\/\/purchase-foodiecn-api\.yiruikecorp\.com\/v1\/purchase\/subscription\/subscriber\/status url script-response-body https://raw.githubusercontent.com/Reviewa/QuantumltX/main/script/foodie.js
 
 [mitm]
 hostname = purchase-foodiecn-api.yiruikecorp.com
