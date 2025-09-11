@@ -3,44 +3,60 @@
   "description": "收集一些自己脚本用到的图标",
   "icons": [
     {
-      "name": "xuanfushizhong.png",
-      "url": "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/icon/xuanfushizhong.png"
-    },
-    {
-      "name": "Loon.png",
-      "url": "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/icon/Loon.png"
-    },
-    {
-      "name": "Caipu.png",
-      "url": "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/icon/Caipu.png"
-    },
-    {
-      "name": "Wx.png",
-      "url": "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/icon/Wx.png"
+      "name": "Dx.png",
+      "url": "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/icon/Dx.png"
     },
     {
       "name": "QuantumultX.png",
       "url": "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/icon/QuantumultX.png"
     },
     {
-      "name": "Yiyan.png",
-      "url": "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/icon/Yiyan.png"
-    },
-    {
       "name": "banner.png",
       "url": "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/icon/banner.png"
     },
     {
-      "name": "Dx.png",
-      "url": "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/icon/Dx.png"
+      "name": "itunes.png",
+      "url": "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/icon/itunes.png"
     },
     {
-      "name": "Qq.png",
-      "url": "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/icon/Qq.png"
+      "name": "Qinglong.png",
+      "url": "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/icon/Qinglong.png"
+    },
+    {
+      "name": "xuanfushizhong.png",
+      "url": "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/icon/xuanfushizhong.png"
+    },
+    {
+      "name": "Github.png",
+      "url": "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/icon/Github.png"
+    },
+    {
+      "name": "Yiyan.png",
+      "url": "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/icon/Yiyan.png"
+    },
+    {
+      "name": "Wx.png",
+      "url": "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/icon/Wx.png"
+    },
+    {
+      "name": "Iscreen.png",
+      "url": "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/icon/Iscreen.png"
+    },
+    {
+      "name": "Loon.png",
+      "url": "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/icon/Loon.png"
     },
     {
       "name": "Foodie.png",
       "url": "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/icon/Foodie.png"
+    },
+    {
+      "name": "Budingsaomiao.png",
+      "url": "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/icon/Budingsaomiao.png"
+    },
+    {
+      "name": "Qq.png",
+      "url": "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/icon/Qq.png"
     },
     {
       "name": "Surge.png",
@@ -51,20 +67,8 @@
       "url": "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/icon/Intolive.png"
     },
     {
-      "name": "Iscreen.png",
-      "url": "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/icon/Iscreen.png"
-    },
-    {
-      "name": "itunes.png",
-      "url": "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/icon/itunes.png"
-    },
-    {
-      "name": "Budingsaomiao.png",
-      "url": "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/icon/Budingsaomiao.png"
-    },
-    {
-      "name": "Qinglong.png",
-      "url": "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/icon/Qinglong.png"
+      "name": "Caipu.png",
+      "url": "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/icon/Caipu.png"
     }
   ]
 }
