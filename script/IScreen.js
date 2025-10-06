@@ -1,12 +1,11 @@
 /*
-
 [rewrite_local]
 ^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt url script-response-body https://raw.githubusercontent.com/Reviewa/QuantumultX/main/script/IScreen.js
 
 [mitm]
 hostname = buy.itunes.apple.com
-
 */
+
 let obj = {
   status: 0,
   environment: "Production",
@@ -14,8 +13,8 @@ let obj = {
     receipt_type: "Production",
     app_item_id: 1534704608,
     bundle_id: "com.zerone.hidesktop",
-    application_version: "6",
-    original_application_version: "4",
+    application_version: "4.3.35",
+    original_application_version: "4.0",
     receipt_creation_date: "2999-09-09 09:09:09 Etc/GMT",
     receipt_creation_date_ms: "32503626054000",
     receipt_creation_date_pst: "2999-09-09 02:09:09 America/Los_Angeles",
