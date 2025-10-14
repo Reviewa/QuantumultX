@@ -1,0 +1,144 @@
+// Author: Reviewa
+// TestFlight departures.to 监控脚本
+// 支持 Widget 点击跳转、自动刷新、配置页面
+
+// 核心函数
+function get(key, defaultValue) {
+  try {
+    const value = localStorage.getItem(key)
+    return value !== null ? JSON.parse(value) : defaultValue
+  } catch {
+    return defaultValue
+  }
+}
+
+function set(key, value) {
+  localStorage.setItem(key, JSON.stringify(value))
+}
+
+async function fetchHTML(url) {
+  const response = await fetch(url)
+  return await response.text()
+}
+
+async function autoRefresh(callback, key, intervalMin = 5) {
+  const last = get(key, 0)
+  const now = Date.now()
+  if (now - last > intervalMin * 60 * 1000) {
+    await callback()
+    set(key, now)
+  }
+}
+
+// Scripting App 组件
+import { Navigation, List, Section, Toggle, Button, NavigationStack, Widget, Link, Text as WText, Stack, Spacer, Script } from "scripting"
+
+function buildStack(items, titleText, maxDisplay = 5) {
+  const stack = new Stack()
+  stack.spacing = 8
+  stack.padding = 16
+  stack.add(new WText(titleText).font("headline"))
+
+  for (let i = 0; i < Math.min(items.length, maxDisplay); i++) {
+    const item = items[i]
+    const link = new Link(item.link)
+    const t = new WText("• " + item.title)
+    t.font = "footnote"
+    t.lineLimit = 1
+    link.add(t)
+    stack.add(link)
+  }
+
+  stack.add(new Spacer())
+  return stack
+}
+
+function ConfigPage() {
+  return (
+    <NavigationStack>
+      <List navigationTitle="Departures 配置">
+        <Section footer={<WText>调整刷新间隔和显示条目数</WText>}>
+          <Toggle
+            title="自动刷新开关"
+            value={get("_autoRefresh_enabled", true)}
+            onChanged={v => set("_autoRefresh_enabled", v)}
+          />
+        </Section>
+        <Section>
+          <Button title="关闭" action={() => Navigation.dismiss()} />
+        </Section>
+      </List>
+    </NavigationStack>
+  )
+}
+
+// TestFlight 业务逻辑
+const STORAGE_KEY = "_departures_lastTitle"
+const REFRESH_KEY = "_autoRefresh_interval"
+const DISPLAY_KEY = "_widget_maxDisplay"
+
+async function fetchDepartures() {
+  const html = await fetchHTML("https://departures.to/latest")
+  const regex = /<h2[^>]*>.*?<a href="(.*?)".*?>(.*?)<\/a>.*?<\/h2>/g
+  const items = []
+  let match
+  while ((match = regex.exec(html)) !== null) {
+    const link = match[1].trim()
+    const title = match[2].replace(/<[^>]+>/g, "").trim()
+    if (title && link) items.push({ title, link })
+  }
+  return items
+}
+
+async function notifyNew(items) {
+  if (!items.length) return
+  const lastTitle = get(STORAGE_KEY, "")
+  if (items[0].title !== lastTitle) {
+    await Widget.notify("Departures 新条目", items[0].title)
+    set(STORAGE_KEY, items[0].title)
+  }
+}
+
+function buildStackWithLinks(items, titleText) {
+  const maxDisplay = get(DISPLAY_KEY, 5)
+  const stack = new Stack()
+  stack.spacing = 8
+  stack.padding = 16
+  stack.add(new WText(titleText).font("headline"))
+
+  for (let i = 0; i < Math.min(items.length, maxDisplay); i++) {
+    const item = items[i]
+    const link = new Link(item.link)
+    const t = new WText("• " + item.title)
+    t.font = "footnote"
+    t.lineLimit = 1
+    link.add(t)
+    stack.add(link)
+  }
+
+  stack.add(new Spacer())
+  return stack
+}
+
+async function main() {
+  await autoRefresh(async () => {
+    const items = await fetchDepartures()
+    await notifyNew(items)
+  }, REFRESH_KEY)
+
+  const items = await fetchDepartures()
+
+  if (Script.parameter === "config") {
+    await Navigation.present({ element: ConfigPage() })
+  } else if (globalThis.runsInWidget) {
+    const stack = buildStackWithLinks(items, "📦 Departures 更新")
+    Widget.present(stack)
+  } else {
+    const stack = buildStackWithLinks(items, "📦 Departures 更新")
+    await Navigation.present({ element: stack })
+  }
+
+  Script.exit()
+}
+
+main()
