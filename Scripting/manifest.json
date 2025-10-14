@@ -1,1 +1,7 @@
-{\n  "name": "Reviewa Scripting Library",\n  "author": "Reviewa",\n  "description": "A modular scripting library and script collection for Scripting App.",\n  "version": "1.0.0",\n  "license": "MIT"\n}
+{
+  "name": "Reviewa Scripting Library",
+  "author": "Reviewa",
+  "description": "A modular scripting library and script collection for Scripting App.",
+  "version": "1.0.0",
+  "license": "MIT"
+}
