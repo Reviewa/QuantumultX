@@ -1,0 +1,31 @@
+/**
+ * Author: Reviewa
+ * Script: TestFlight Monitor
+ * Description: 监控 TestFlight 页面变化并通知
+ */
+
+import { fetchHTML, buildStack, getInterval } from "../lib/index";
+
+const TESTFLIGHT_URL = "https://testflight.apple.com/join/";
+
+async function checkTestFlight() {
+  const html = await fetchHTML(TESTFLIGHT_URL);
+  const available = html.includes("Join the beta");
+
+  const w = buildStack(
+    "TestFlight 监控",
+    available ? "有新的可加入测试" : "暂无可用测试"
+  );
+
+  if (available) {
+    const n = new Notification();
+    n.title = "TestFlight 更新";
+    n.body = "发现新的可用测试项目！";
+    await n.schedule();
+  }
+
+  if (config.runsInWidget) return w;
+  w.presentMedium();
+}
+
+await checkTestFlight();
