@@ -1,8 +1,6 @@
-// @ts-nocheck
-// ===================== Scripting 单文件库 =====================
-
-// --------------------- 存储工具 ---------------------
-export function get(key: string, defaultValue?: any) {
+// Author: Reviewa
+// Scripting 公共库
+export function get(key: string, defaultValue: any) {
   try {
     const value = localStorage.getItem(key)
     return value !== null ? JSON.parse(value) : defaultValue
@@ -15,13 +13,11 @@ export function set(key: string, value: any) {
   localStorage.setItem(key, JSON.stringify(value))
 }
 
-// --------------------- HTML 获取 ---------------------
 export async function fetchHTML(url: string) {
   const response = await fetch(url)
   return await response.text()
 }
 
-// --------------------- 自动刷新 ---------------------
 export async function autoRefresh(callback: Function, key: string, intervalMin = 5) {
   const last = get(key, 0)
   const now = Date.now()
@@ -31,15 +27,12 @@ export async function autoRefresh(callback: Function, key: string, intervalMin =
   }
 }
 
-// --------------------- Widget 栈构建 ---------------------
-import { Widget, Link, Spacer, Text as WText, Stack } from "scripting"
-
-export function buildStack(items: { title: string; link: string }[], titleText: string, maxDisplay = 5) {
+export function buildStack(items: any[], titleText: string, maxDisplay = 5) {
+  const { Stack, Link, Text: WText, Spacer } = require("scripting")
   const stack = new Stack()
   stack.spacing = 8
   stack.padding = 16
   stack.add(new WText(titleText).font("headline"))
-
   for (let i = 0; i < Math.min(items.length, maxDisplay); i++) {
     const item = items[i]
     const link = new Link(item.link)
@@ -49,18 +42,15 @@ export function buildStack(items: { title: string; link: string }[], titleText: 
     link.add(t)
     stack.add(link)
   }
-
   stack.add(new Spacer())
   return stack
 }
 
-// --------------------- 可视化配置页面 ---------------------
-import { Navigation, List, Section, Toggle, Button, NavigationStack } from "scripting"
-
 export function ConfigPage() {
+  const { Navigation, List, Section, Toggle, Button, NavigationStack, Text: WText } = require("scripting")
   return (
     <NavigationStack>
-      <List navigationTitle="配置页面">
+      <List navigationTitle="配置">
         <Section footer={<WText>调整刷新间隔和显示条目数</WText>}>
           <Toggle
             title="自动刷新开关"
@@ -75,5 +65,3 @@ export function ConfigPage() {
     </NavigationStack>
   )
 }
-
-// ===================== 其他工具函数可继续扩展 =====================
