@@ -1,4 +1,6 @@
 // Author: Reviewa
+// TestFlight departures.to 监控脚本
+
 import { fetchHTML, buildStack, autoRefresh, ConfigPage, get, set } 
   from "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/Scripting/Scripting.ts"
 import { Widget, Navigation, Script } from "scripting"
