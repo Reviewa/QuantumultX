@@ -1,5 +1,7 @@
 // Author: Reviewa
-// Scripting 公共库
+// Scripting 公共库函数
+import { Stack, Link, Text as WText, Spacer, Navigation, List, Section, Toggle, Button, NavigationStack } from "scripting"
+
 export function get(key: string, defaultValue: any) {
   try {
     const value = localStorage.getItem(key)
@@ -27,12 +29,12 @@ export async function autoRefresh(callback: Function, key: string, intervalMin =
   }
 }
 
-export function buildStack(items: any[], titleText: string, maxDisplay = 5) {
-  const { Stack, Link, Text: WText, Spacer } = require("scripting")
+export function buildStack(items: { title: string; link: string }[], titleText: string, maxDisplay = 5) {
   const stack = new Stack()
   stack.spacing = 8
   stack.padding = 16
   stack.add(new WText(titleText).font("headline"))
+
   for (let i = 0; i < Math.min(items.length, maxDisplay); i++) {
     const item = items[i]
     const link = new Link(item.link)
@@ -42,12 +44,12 @@ export function buildStack(items: any[], titleText: string, maxDisplay = 5) {
     link.add(t)
     stack.add(link)
   }
+
   stack.add(new Spacer())
   return stack
 }
 
 export function ConfigPage() {
-  const { Navigation, List, Section, Toggle, Button, NavigationStack, Text: WText } = require("scripting")
   return (
     <NavigationStack>
       <List navigationTitle="配置">
