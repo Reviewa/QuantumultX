@@ -1,11 +1,12 @@
+/*
 
+[rewrite_local]
+^https:\/\/base\.ysjf\.com\/storm_auth\/user\/self url script-response-body https://raw.githubusercontent.com/Reviewa/QuantumultX/main/script/jfxj.js
 
+[mitm]
+hostname = base.ysjf.com
 
-
-
-
-
-
+*/
 
 let body = JSON.parse($response.body);
 body = {
