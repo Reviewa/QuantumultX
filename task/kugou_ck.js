@@ -7,7 +7,7 @@
 
 [task_local]
 
-0 8 * * * https://raw.githubusercontent.com/Reviewa/QuantumultX/main/task/kugoug_ck.js, tag=酷狗音乐概念版签到, enabled=true
+0 8 * * * https://raw.githubusercontent.com/Reviewa/QuantumultX/main/task/kugou_ck.js, tag=酷狗音乐概念版签到, enabled=true
 
 [mitm]
 
