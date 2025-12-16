@@ -4,9 +4,6 @@
 
 ^https?://gateway\.kugou\.com/(concepts/v1/bz_mall/get_goods_info|yutc/youth/v1/task/sign_state) http-request https://raw.githubusercontent.com/Reviewa/QuantumultX/main/task/kugou_ck.js
 
-
-
-
 [task_local]
 
 0 8 * * * https://raw.githubusercontent.com/Reviewa/QuantumultX/main/task/kugou_ck.js, tag=酷狗音乐概念版签到, enabled=true
