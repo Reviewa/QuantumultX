@@ -1,5 +1,4 @@
 /*
-#!name=酷狗音乐概念版
 
 [rewrite_local]
 
@@ -13,6 +12,7 @@
 [mitm]
 
 hostname = gateway.kugou.com
+
 */
 
 const $ = new Env('酷狗音乐概念版');
