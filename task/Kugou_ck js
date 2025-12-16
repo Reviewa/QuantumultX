@@ -1,0 +1,82 @@
+/*
+#!name=酷狗音乐概念版统一获取CK
+[Script]
+酷狗音乐概念版白赚挑战获取CK = type=http-request, pattern=^https:\/\/gateway\.kugou\.com\/concepts\/v1\/bz_mall\/get_goods_info, script-path=https://raw.githubusercontent.com/Reviewa/QuantumultX/main/task/Kugou_ck.js, requires-body=false, timeout=300
+酷狗音乐概念版每日签到获取CK = type=http-request, pattern=^https:\/\/gateway\.kugou\.com\/yutc\/youth\/v1\/task\/sign_state, script-path=https://raw.githubusercontent.com/Reviewa/QuantumultX/main/task/Kugou_ck.js, requires-body=false, timeout=300
+
+[MITM]
+hostname = gateway.kugou.com
+*/
+
+const $ = new Env('酷狗音乐概念版统一获取CK');
+const ckName = 'kugougnbck';  // 统一变量名
+
+async function getCookie() {
+    try {
+        if ($request.method === 'OPTIONS') return;
+
+        const url = $request.url;
+        if (!url.includes('get_goods_info') && !url.includes('sign_state')) return;
+
+        const params = getQueries(url.split('?')[1] || '');
+        const userid = params.userid || '';
+        const token = params.token || '';
+        const mid = params.mid || params.uuid || '';
+        const dfid = params.dfid || '';
+
+        if (!userid || !token || !mid) {
+            $.msg('酷狗音乐概念版', '❌ 抓取失败', '参数缺失');
+            return;
+        }
+
+        const ckValue = `userid=${userid};token=${token};mid=${mid};dfid=${dfid};`;
+        await refreshQingLong(ckName, ckValue, userid);
+
+        const from = url.includes('get_goods_info') ? '白赚挑战' : '每日签到';
+        $.msg('酷狗音乐概念版', `✅ ${from} CK抓取成功`, `账号ID: ${userid}`);
+
+    } catch (e) {
+        $.msg('酷狗音乐概念版', '❌ 抓取异常', e.message || e);
+    } finally {
+        $.done();
+    }
+}
+
+!(async () => await getCookie())();
+
+function getQueries(str) {
+    if (!str) return {};
+    return str.split('&').reduce((obj, pair) => {
+        const [k, v] = pair.split('=');
+        if (k) obj[k] = decodeURIComponent(v || '');
+        return obj;
+    }, {});
+}
+
+async function refreshQingLong(name, value, remarks) {
+    try {
+        const { host, clientId, secret } = $.getjson('SAKURA_QL') || {};
+        if (!host || !clientId || !secret) return;
+
+        let ql = await loadQingLong({ host, clientId, secret });
+        await ql.checkLogin();
+        await ql.getEnvs();
+
+        const existing = ql.envs.find(env => env.name === name && env.remarks === remarks);
+        if (existing) await ql.updateEnv({ id: existing.id, value, name, remarks });
+        else await ql.addEnv([{ value, name, remarks }]);
+    } catch (e) {}
+}
+
+async function loadQingLong(QL) {
+    let code = $.getdata('qinglong_code') || '';
+    if (code) { eval(code); return new QingLong(QL.host, QL.clientId, QL.secret); }
+    return new Promise(resolve => {
+        $.getScript('https://fastly.jsdelivr.net/gh/Sliverkiss/QuantumultX@main/Utils/QingLong.min.js')
+            .then(fn => {
+                $.setdata(fn, 'qinglong_code');
+                eval(fn);
+                resolve(new QingLong(QL.host, QL.clientId, QL.secret));
+            });
+    });
+}
