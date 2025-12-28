@@ -1,1 +1,8 @@
-{}
+{
+  "id": "zh.rouman5",
+  "name": "肉漫屋",
+  "version": "1.0.0",
+  "lang": "zh",
+  "nsfw": true,
+  "baseUrl": "https://rouman5.com"
+}
