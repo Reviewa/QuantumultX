@@ -1,9 +1,9 @@
-# NAME: 漫画
+# NAME: Comic
 # AUTHOR: Reviewa
 # REPO: https://github.com/Reviewa/QuantumultX
 # UPDATED: 2025-12-31
-# HOST-SUFFIX: 12
-# TOTAL: 12
+# HOST-SUFFIX: 13
+# TOTAL: 13
 HOST-SUFFIX,18comic-rajang.club,Comic
 HOST-SUFFIX,18comic.org,Comic
 HOST-SUFFIX,18comic.vip,Comic
@@ -13,6 +13,7 @@ HOST-SUFFIX,cdn-msp.18comic.org,Comic
 HOST-SUFFIX,cdn-msp3.18comic-rajang.club,Comic
 HOST-SUFFIX,freexcomic.com,Comic
 HOST-SUFFIX,ho5ho.com,Comic
+HOST-SUFFIX,host-cover.mangabuddy.in,Comic
 HOST-SUFFIX,jmd8.com,Comic
 HOST-SUFFIX,manhuabika.com,Comic
 HOST-SUFFIX,mxs13.cc,Comic
