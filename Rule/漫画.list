@@ -1,10 +1,16 @@
 # NAME: 漫画
-# AUTHOR: Reviewa (or your name)
+# AUTHOR: Reviewa
 # REPO: https://github.com/Reviewa/QuantumultX
 # UPDATED: 2025-12-31
-# HOST-SUFFIX: 7
-# TOTAL: 7
+# HOST-SUFFIX: 12
+# TOTAL: 12
+HOST-SUFFIX,18comic-rajang.club,Comic
+HOST-SUFFIX,18comic.org,Comic
+HOST-SUFFIX,18comic.vip,Comic
 HOST-SUFFIX,18mh.org,Comic
+HOST-SUFFIX,cdn-msp.18comic-rajang.club,Comic
+HOST-SUFFIX,cdn-msp.18comic.org,Comic
+HOST-SUFFIX,cdn-msp3.18comic-rajang.club,Comic
 HOST-SUFFIX,freexcomic.com,Comic
 HOST-SUFFIX,ho5ho.com,Comic
 HOST-SUFFIX,jmd8.com,Comic
