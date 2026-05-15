@@ -3,6 +3,10 @@
   "description": "收集一些自己脚本用到的图标",
   "icons": [
     {
+      "name": "WESTDATA.png",
+      "url": "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/icon/WESTDATA.png"
+    },
+    {
       "name": "Caipu.png",
       "url": "https://raw.githubusercontent.com/Reviewa/QuantumultX/main/icon/Caipu.png"
     },
