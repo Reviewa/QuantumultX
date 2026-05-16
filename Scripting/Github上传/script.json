@@ -1,0 +1,40 @@
+{
+  "iconImage" : null,
+  "entry" : "index.tsx",
+  "description" : null,
+  "author" : null,
+  "remoteResource" : null,
+  "color" : "rgba(128, 138, 148,1)",
+  "version" : "1.0.0",
+  "icon" : "level.fill",
+  "intentInputTypes" : [
+
+  ],
+  "name" : "Github上传",
+  "runInApp" : false,
+  "contributors" : [
+
+  ],
+  "localizedNames" : {
+    "de" : "",
+    "ja" : "",
+    "es" : "",
+    "en" : "",
+    "fr" : "",
+    "ru" : "",
+    "it" : "",
+    "zh" : "",
+    "pt" : ""
+  },
+  "localizedDescriptions" : {
+    "de" : "",
+    "ja" : "",
+    "es" : "",
+    "en" : "",
+    "fr" : "",
+    "ru" : "",
+    "it" : "",
+    "zh" : "",
+    "pt" : ""
+  }
+}
